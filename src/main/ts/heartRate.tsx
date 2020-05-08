@@ -19,8 +19,8 @@ interface IHeartRateState {
     x1?: number;
 }
 
-interface IEnergyEfficiencyDatum {
-    energyEfficiency: number;
+interface IenergyExpenditureDatum {
+    energyExpenditure: number;
     time: number;
 }
 
@@ -70,24 +70,24 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
 
     public render() {
         // TODO(markelliot): we should do this off the UI thread as a result of state updates
-        const energyEfficiency: IEnergyEfficiencyDatum[] = [];
-        const cumEnergyEfficiency: IEnergyEfficiencyDatum[] = [];
-        let dailyEnergyEfficiency = -1;
+        const energyExpenditure: IenergyExpenditureDatum[] = [];
+        const cumEnergyExpenditure: IenergyExpenditureDatum[] = [];
+        let dailyenergyExpenditure = -1;
         if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr.length > 0) {
             // calculate
-            dailyEnergyEfficiency = 0;
+            dailyenergyExpenditure = 0;
             const hr = this.state.hr;
             for (let i = 1; i < hr.length; i++) {
                 const deltaTime = hr[i].time - hr[i - 1].time; // milliseconds
                 if (deltaTime < 70000) {
-                    const ee = this.energyEfficiency(hr[i].bpm) * (deltaTime / 60000);
-                    energyEfficiency.push({
-                        energyEfficiency: ee,
+                    const ee = this.energyExpenditure(hr[i].bpm) * (deltaTime / 60000);
+                    energyExpenditure.push({
+                        energyExpenditure: ee,
                         time: hr[i].time,
                     });
-                    dailyEnergyEfficiency = dailyEnergyEfficiency + ee;
-                    cumEnergyEfficiency.push({
-                        energyEfficiency: dailyEnergyEfficiency,
+                    dailyenergyExpenditure = dailyenergyExpenditure + ee;
+                    cumEnergyExpenditure.push({
+                        energyExpenditure: dailyenergyExpenditure,
                         time: hr[i].time,
                     });
                 }
@@ -122,21 +122,21 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                 </div>
                 <div className="display">
                     <p>
-                        Daily Energy Efficiency: <strong>{Math.round(dailyEnergyEfficiency * 100) / 100} kcal</strong>
+                        Daily Energy Expenditure: <strong>{Math.round(dailyenergyExpenditure * 100) / 100} kcal</strong>
                     </p>
                     {this.scatterPlot(
-                        "Energy Efficiency",
+                        "Energy Expenditure",
                         "kcal/min",
-                        energyEfficiency,
+                        energyExpenditure,
                         (e) => new Date(e.time),
-                        (e) => e.energyEfficiency,
+                        (e) => e.energyExpenditure,
                     )}
                     {this.scatterPlot(
                         "Cumulative Energy Expenditure",
                         "kcal",
-                        cumEnergyEfficiency,
+                        cumEnergyExpenditure,
                         (e) => new Date(e.time),
-                        (e) => e.energyEfficiency,
+                        (e) => e.energyExpenditure,
                     )}
                     {this.scatterPlot(
                         "Heart Rate over Time",
@@ -203,7 +203,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         return new Date(str);
     }
 
-    private energyEfficiency = (heartRate: number): number => {
+    private energyExpenditure = (heartRate: number): number => {
         if (heartRate < this.state.shr!) {
             const ee = this.state.x0! + this.state.x1! * heartRate;
             return ee;
