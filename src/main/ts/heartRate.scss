@@ -1,0 +1,28 @@
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+@import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
+
+.heartRate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .display {
+        min-height: 300px;
+        background-color: $light-gray3;
+        padding: $pt-grid-size;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: row;
+        padding-top: $pt-grid-size;
+
+        > div {
+            padding-left: $pt-grid-size;
+            padding-right: $pt-grid-size;
+        }
+    }
+}
