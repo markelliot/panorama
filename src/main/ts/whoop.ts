@@ -1,4 +1,4 @@
-const baseUrl = "https://api-7.whoop.com/";
+const baseUrl = "https://api-7.whoop.com";
 
 export interface IWhoopToken {
     token: string;
@@ -12,7 +12,7 @@ export interface IHeartRateDatum {
 }
 
 export function login(email: string, password: string): Promise<IWhoopToken> {
-    return fetch(baseUrl + "oauth/token", {
+    return fetch(`${baseUrl}/oauth/token`, {
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -40,7 +40,7 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
 export function heartRate(token: IWhoopToken, start: Date, end: Date) {
     return fetch(
         `${baseUrl}/users/${
-            token.userId
+        token.userId
         }/metrics/heart_rate?step=60&start=${start.toISOString()}&end=${end.toISOString()}`,
         {
             method: "GET",
