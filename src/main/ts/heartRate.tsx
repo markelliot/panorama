@@ -213,23 +213,31 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private updateRmr = (rmr: number) => {
-        this.setState({ ...this.state, rmr });
-        localStorage.setItem("pnoe.rmr", String(rmr));
+        if (!isNaN(rmr)) {
+            this.setState({ ...this.state, rmr });
+            localStorage.setItem("pnoe.rmr", String(rmr));
+        }
     }
 
     private updateShr = (shr: number) => {
-        this.setState({ ...this.state, shr });
-        localStorage.setItem("pnoe.shr", String(shr));
+        if (!isNaN(shr)) {
+            this.setState({ ...this.state, shr });
+            localStorage.setItem("pnoe.shr", String(shr));
+        }
     }
 
     private updateX0 = (x0: number) => {
-        this.setState({ ...this.state, x0 });
-        localStorage.setItem("pnoe.x0", String(x0));
+        if (!isNaN(x0)) {
+            this.setState({ ...this.state, x0 });
+            localStorage.setItem("pnoe.x0", String(x0));
+        }
     }
 
     private updateX1 = (x1: number) => {
-        this.setState({ ...this.state, x1 });
-        localStorage.setItem("pnoe.x1", String(x1));
+        if (!isNaN(x1)) {
+            this.setState({ ...this.state, x1 });
+            localStorage.setItem("pnoe.x1", String(x1));
+        }
     }
 
     private updateObservationDate = (date: Date) => {
