@@ -77,7 +77,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
             // calculate
             dailyenergyExpenditure = 0;
             const hr = this.state.hr;
-            for (let i = 5; i < hr.length; i += 5) {
+            for (let i = 5; i < hr.length; i++) {
                 // const deltaTime = hr[i].time - hr[i - 5].time; // milliseconds
                 const deltaTime = 60000;
                 const bpm = (hr[i].bpm + hr[i - 1].bpm + hr[i - 2].bpm + hr[i - 3].bpm + hr[i - 4].bpm) / 5;
