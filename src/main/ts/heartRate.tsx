@@ -204,9 +204,8 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private energyExpenditure = (heartRate: number): number => {
-        if (heartRate < this.state.shr!) {
-            const ee = this.state.x0! + this.state.x1! * heartRate;
-            return ee;
+        if (this.state.shr! < heartRate) {
+            return this.state.x0! + this.state.x1! * heartRate;
         } else {
             return this.state.rmr!;
         }
