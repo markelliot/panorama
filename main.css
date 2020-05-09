@@ -8414,18 +8414,7 @@ Licensed under the Apache License, Version 2.0.
   font-style:normal;
   font-weight:normal;
   src:url(../cde033c5d3f24283f7578120bb9dc288.eot?#iefix) format("embedded-opentype"), url(../1ef633d3a28d0986f63e78a70178d06d.woff) format("woff"), url(../57b3e708b232fdcb64f9cb115cdda7bb.ttf) format("truetype"); }
-#root {
-  width: 100%;
-  height: 100%;
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+#root{width:100%;height:100%}html,body{height:100%;width:100%;margin:0;padding:0}
 /*!
 
 Copyright 2015-present Palantir Technologies, Inc. All rights reserved.
@@ -8872,41 +8861,5 @@ Licensed under the Apache License, Version 2.0.
 
 .bp3-dateinput-popover{
   padding:0; }
-/*
- * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
- */
-.heartRate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.heartRate .display {
-  min-height: 300px;
-  background-color: #e1e8ed;
-  padding: 10px;
-}
-.heartRate .controls {
-  display: flex;
-  flex-direction: row;
-  padding-top: 10px;
-}
-.heartRate .controls > div {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-/*
- * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
- */
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-.login > div {
-  max-width: 500px;
-  min-height: 300px;
-  background-color: #e1e8ed;
-  padding: 10px;
-}
+.heartRate{display:flex;align-items:center;justify-content:center;flex-direction:column}.heartRate .display{min-height:300px;background-color:#e1e8ed;padding:10px}.heartRate .controls{display:flex;flex-direction:row;padding-top:10px}.heartRate .controls>div{padding-left:10px;padding-right:10px}
+.login{display:flex;align-items:center;justify-content:center;height:100%}.login>div{max-width:500px;min-height:300px;background-color:#e1e8ed;padding:10px}
