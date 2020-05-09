@@ -19,7 +19,7 @@ interface IHeartRateState {
     x1?: number;
 }
 
-interface IenergyExpenditureDatum {
+interface IEnergyExpenditureDatum {
     energyExpenditure: number;
     time: number;
 }
@@ -70,8 +70,8 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
 
     public render() {
         // TODO(markelliot): we should do this off the UI thread as a result of state updates
-        const energyExpenditure: IenergyExpenditureDatum[] = [];
-        const cumEnergyExpenditure: IenergyExpenditureDatum[] = [];
+        const energyExpenditure: IEnergyExpenditureDatum[] = [];
+        const cumEnergyExpenditure: IEnergyExpenditureDatum[] = [];
         let dailyenergyExpenditure = -1;
         if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr.length > 0) {
             // calculate
