@@ -38,15 +38,15 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
 }
 
 export function heartRate(token: IWhoopToken, start: Date, end: Date) {
-    return fetch(
-        `${baseUrl}/users/${
-        token.userId
-        }/metrics/heart_rate?step=60&start=${start.toISOString()}&end=${end.toISOString()}`,
+    return fetch(`https://f9dcpfb4u4.execute-api.us-east-2.amazonaws.com/default/fetchWhoop`,
         {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${token.token}`,
-            },
+            method: "POST",
+            body: JSON.stringify({
+                path: `/users/${
+                    token.userId
+                    }/metrics/heart_rate?step=60&start=${start.toISOString()}&end=${end.toISOString()}`,
+                bearer: token.token
+            })
         }
     )
         .then((response) => response.json())
