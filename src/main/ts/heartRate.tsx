@@ -123,9 +123,11 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                     </FormGroup>
                 </div>
                 <div className="display">
-                    <p>
-                        Daily Energy Expenditure: <strong>{Math.round(dailyenergyExpenditure * 100) / 100} kcal</strong>
-                    </p>
+                    {dailyenergyExpenditure > 0 ?
+                        <p>
+                            Daily Energy Expenditure: <strong>{Math.round(dailyenergyExpenditure * 100) / 100} kcal</strong>
+                        </p>
+                        : null}
                     {this.scatterPlot(
                         "Energy Expenditure",
                         "kcal/min",
@@ -175,11 +177,14 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                             },
                         ]}
                         layout={{
+                            autosize: true,
                             title,
                             yaxis: {
                                 title: yLabel,
                             },
                         }}
+                        style={{ width: "100%", height: "100%" }}
+                        useResizeHandler={true}
                     />
                 </div>
             );

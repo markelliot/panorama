@@ -11,6 +11,7 @@
 
     .display {
         min-height: 300px;
+        width: 100%;
         background-color: $light-gray3;
         padding: $pt-grid-size;
     }
@@ -18,11 +19,13 @@
     .controls {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         padding-top: $pt-grid-size;
 
         > div {
             padding-left: $pt-grid-size;
             padding-right: $pt-grid-size;
+            display: block;
         }
     }
 }
