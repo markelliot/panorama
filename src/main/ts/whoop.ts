@@ -38,7 +38,7 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
 }
 
 export function heartRate(token: IWhoopToken, start: Date, end: Date) {
-    return fetch(`http://musicaldiscoveries.com/panorama/whoop.php`,
+    return fetch(`https://musicaldiscoveries.com/panorama/whoop.php`,
         {
             method: "POST",
             body: JSON.stringify({
