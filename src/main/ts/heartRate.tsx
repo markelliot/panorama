@@ -72,10 +72,10 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         // TODO(markelliot): we should do this off the UI thread as a result of state updates
         const energyExpenditure: IEnergyExpenditureDatum[] = [];
         const cumEnergyExpenditure: IEnergyExpenditureDatum[] = [];
-        let dailyenergyExpenditure = -1;
+        let dailyEnergyExpenditure = -1;
         if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr.length > 0) {
             // calculate
-            dailyenergyExpenditure = 0;
+            dailyEnergyExpenditure = 0;
             const hr = this.state.hr;
             for (let i = 5; i < hr.length; i++) {
                 // const deltaTime = hr[i].time - hr[i - 5].time; // milliseconds
@@ -87,9 +87,9 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                     energyExpenditure: ee,
                     time: hr[i].time,
                 });
-                dailyenergyExpenditure = dailyenergyExpenditure + ee;
+                dailyEnergyExpenditure = dailyEnergyExpenditure + ee;
                 cumEnergyExpenditure.push({
-                    energyExpenditure: dailyenergyExpenditure,
+                    energyExpenditure: dailyEnergyExpenditure,
                     time: hr[i].time,
                 });
                 // }
@@ -123,11 +123,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                     </FormGroup>
                 </div>
                 <div className="display">
-                    {dailyenergyExpenditure > 0 ?
-                        <p>
-                            Daily Energy Expenditure: <strong>{Math.round(dailyenergyExpenditure * 100) / 100} kcal</strong>
-                        </p>
-                        : null}
+                    {this.dailyEe(dailyEnergyExpenditure)}
                     {this.scatterPlot(
                         "Energy Expenditure",
                         "kcal/min",
@@ -152,6 +148,14 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                 </div>
             </div>
         );
+    }
+
+    private dailyEe(dailyEnergyExpenditure: number) {
+        if (0 < dailyEnergyExpenditure) {
+            return <p>
+                Daily Energy Expenditure: <strong>{Math.round(dailyEnergyExpenditure * 100) / 100} kcal</strong>
+            </p>;
+        }
     }
 
     private scatterPlot<T>(
