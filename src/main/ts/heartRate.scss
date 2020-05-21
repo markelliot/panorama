@@ -28,4 +28,15 @@
             display: block;
         }
     }
+
+    .summary {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > div {
+            padding: $pt-grid-size;
+            display: block;
+        }
+    }
 }

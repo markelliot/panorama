@@ -1,18 +1,26 @@
-import { FormGroup, NumericInput } from "@blueprintjs/core";
+import { FormGroup, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
 import { DateInput } from "@blueprintjs/datetime";
+import moment from "moment";
 import * as React from "react";
 import Plot from "react-plotly.js";
 import "./heartRate.scss";
-import { IHeartRateDatum } from "./whoop";
+import { IHeartRateDay } from "./whoop";
 import * as whoop from "./whoop";
 
 interface IHeartRateProps {
     token: whoop.IWhoopToken;
 }
 
+enum DayType {
+    CALENDAR = "calendar",
+    SLEEP = "sleep",
+}
+
 interface IHeartRateState {
+    day?: whoop.IDay;
+    dayType: DayType;
     date: Date;
-    hr: IHeartRateDatum[];
+    hr?: IHeartRateDay;
     rmr?: number;
     shr?: number;
     x0?: number;
@@ -32,12 +40,12 @@ now.setHours(0);
 export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState> {
     public state: IHeartRateState = {
         date: now,
-        hr: [],
+        dayType: DayType.SLEEP,
     };
 
     public componentDidMount() {
-        if (this.state.hr.length === 0) {
-            this.getHeartRate();
+        if (!this.state.hr) {
+            this.getData();
         }
         let updatedState = {};
         // TODO(markelliot) make functions to do this
@@ -73,10 +81,10 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         const energyExpenditure: IEnergyExpenditureDatum[] = [];
         const cumEnergyExpenditure: IEnergyExpenditureDatum[] = [];
         let dailyEnergyExpenditure = -1;
-        if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr.length > 0) {
+        if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr) {
             // calculate
             dailyEnergyExpenditure = 0;
-            const hr = this.state.hr;
+            const hr = this.state.hr.hr;
             for (let i = 5; i < hr.length; i++) {
                 // const deltaTime = hr[i].time - hr[i - 5].time; // milliseconds
                 const deltaTime = 60000;
@@ -121,9 +129,20 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                             onChange={this.updateObservationDate}
                         />
                     </FormGroup>
+                    <RadioGroup
+                        inline={true}
+                        label="Day Type"
+                        onChange={this.updateDayType}
+                        selectedValue={this.state.dayType}>
+                        <Radio label="Sleep Day" value={DayType.SLEEP} />
+                        <Radio label="Calendar Day" value={DayType.CALENDAR} />
+                    </RadioGroup>
                 </div>
                 <div className="display">
-                    {this.dailyEe(dailyEnergyExpenditure)}
+                    <div className="summary">
+                        {this.state.day ? this.daySummary(this.state.day!) : null}
+                        {this.dailyEe(dailyEnergyExpenditure)}
+                    </div>
                     {this.scatterPlot(
                         "Energy Expenditure",
                         "kcal/min",
@@ -141,7 +160,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                     {this.scatterPlot(
                         "Heart Rate over Time",
                         "beats per minute",
-                        this.state.hr,
+                        this.state.hr ? this.state.hr.hr : [],
                         (e) => new Date(e.time),
                         (e) => e.bpm,
                     )}
@@ -150,11 +169,43 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         );
     }
 
+    private daySummary(day: whoop.IDay) {
+        const start = moment(day.during.lower);
+        const end = moment(day.during.upper);
+
+        return <div>
+            <strong>Whoop Statistics</strong>
+            <table>
+                <tr>
+                    <td>Sleep Day</td>
+                    <td>{start.format("HH:mm:ss (dd)")} - {end.isValid() ? end.format("HH:mm:ss (dd)") : null}</td>
+                </tr>
+                <tr>
+                    <td>Energy Expenditure</td>
+                    <td>{Math.round(day.strain.kilojoules * 100 / 4.184) / 100} kcal</td>
+                </tr>
+            </table>
+        </div>;
+    }
+
     private dailyEe(dailyEnergyExpenditure: number) {
         if (0 < dailyEnergyExpenditure) {
-            return <p>
-                Daily Energy Expenditure: <strong>{Math.round(dailyEnergyExpenditure * 100) / 100} kcal</strong>
-            </p>;
+            const start = moment(this.state.hr!.start);
+            const end = moment(this.state.hr!.end);
+
+            return <div>
+                <strong>Computed Statistics</strong>
+                <table>
+                    <tr>
+                        <td>Day</td>
+                        <td>{start.format("HH:mm:ss (dd)")} - {end.isValid() ? end.format("HH:mm:ss (dd)") : null}</td>
+                    </tr>
+                    <tr>
+                        <td>Energy Expenditure</td>
+                        <td>{Math.round(dailyEnergyExpenditure * 100) / 100} kcal</td>
+                    </tr>
+                </table>
+            </div>;
         }
     }
 
@@ -196,10 +247,30 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         return null;
     }
 
-    private getHeartRate = () => {
-        const start = this.state.date;
-        const end = new Date(this.state.date);
-        end.setSeconds(end.getSeconds() + 86400);
+    private getData = () => {
+        const localDayStart = this.state.date;
+
+        switch (this.state.dayType) {
+            case DayType.SLEEP:
+                whoop.sleepCycle(this.props.token, localDayStart)
+                    .then((days) => {
+                        this.setState({ ...this.state, day: days[0] });
+
+                        const sleepDayStart = moment(days[0].during.lower).toDate();
+                        const sleepDayEnd = days[0].during.upper ? moment(days[0].during.upper).toDate() : new Date();
+                        this.getHeartRate(sleepDayStart, sleepDayEnd);
+                    })
+                    .catch((error) => console.error("error getting sleep cycle data", error));
+                break;
+            case DayType.CALENDAR:
+                const localDayEnd = new Date(this.state.date);
+                localDayEnd.setSeconds(localDayEnd.getSeconds() + 86400);
+                this.getHeartRate(localDayStart, localDayEnd);
+                break;
+        }
+    }
+
+    private getHeartRate = (start: Date, end: Date) => {
         whoop
             .heartRate(this.props.token, start, end)
             .then((hr) => this.setState({ ...this.state, hr }))
@@ -251,6 +322,21 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private updateObservationDate = (date: Date) => {
-        this.setState({ ...this.state, date }, () => this.getHeartRate());
+        this.setState({ ...this.state, date }, () => this.getData());
+    }
+
+    private updateDayType: React.FormEventHandler<HTMLInputElement> = (evt) => {
+        const dayType = this.parseDayType((evt.target as HTMLInputElement).value);
+        this.setState({ ...this.state, dayType }, this.getData);
+    }
+
+    private parseDayType(str: string) {
+        switch (str) {
+            default:
+            case DayType.SLEEP:
+                return DayType.SLEEP;
+            case DayType.CALENDAR:
+                return DayType.CALENDAR;
+        }
     }
 }
