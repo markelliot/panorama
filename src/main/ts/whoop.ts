@@ -70,9 +70,9 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
 }
 
 function safeGet(token: IWhoopToken, url: string) {
-    return fetch(corsSafeBaseUrl,
+    return fetch(`${corsSafeBaseUrl}${url}`,
         {
-            method: `${corsSafeBaseUrl}${url}`,
+            method: "GET",
             headers: {
                 authorization: `Bearer ${token.token}`
             }
