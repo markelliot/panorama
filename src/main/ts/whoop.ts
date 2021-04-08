@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const baseUrl = "https://api-7.whoop.com";
-const corsSafeBaseUrl = "https://musicaldiscoveries.com/panorama/whoop.php";
+const corsSafeBaseUrl = "https://panorama.markelliot.workers.dev";
 
 export interface IWhoopToken {
     token: string;
@@ -69,20 +69,23 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
         });
 }
 
+function safeGet(token: IWhoopToken, url: string) {
+    return fetch(corsSafeBaseUrl,
+        {
+            method: `${corsSafeBaseUrl}${url}`,
+            headers: {
+                authorization: `Bearer ${token.token}`
+            }
+        })
+        .then((response) => response.json());
+}
+
 export function sleepCycle(token: IWhoopToken, day: Date) {
     const query = params({
         start: day.toISOString(),
         end: day.toISOString()
     });
-    return fetch(corsSafeBaseUrl,
-        {
-            method: "POST",
-            body: JSON.stringify({
-                path: `/users/${token.userId}/cycles?${query}`,
-                bearer: token.token
-            })
-        })
-        .then((response) => response.json())
+    return safeGet(token, `/users/${token.userId}/cycles?${query}`)
         .then((json) => json as IDay[]);
 }
 
@@ -92,16 +95,7 @@ export function heartRate(token: IWhoopToken, start: Date, end: Date): Promise<I
         start: start.toISOString(),
         end: end.toISOString()
     });
-    return fetch(corsSafeBaseUrl,
-        {
-            method: "POST",
-            body: JSON.stringify({
-                path: `/users/${token.userId}/metrics/heart_rate?${query}`,
-                bearer: token.token
-            })
-        }
-    )
-        .then((response) => response.json())
+    return safeGet(token, `/users/${token.userId}/metrics/heart_rate?${query}`)
         .then((json) => {
             const hr: IHeartRateDatum[] = json.values.map((datum: any) => {
                 return { time: datum.time, bpm: Number(datum.data) ?? 0 };
