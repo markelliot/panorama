@@ -176,14 +176,16 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         return <div>
             <strong>Whoop Statistics</strong>
             <table>
-                <tr>
-                    <td>Sleep Day</td>
-                    <td>{start.format("HH:mm:ss (dd)")} - {end.isValid() ? end.format("HH:mm:ss (dd)") : null}</td>
-                </tr>
-                <tr>
-                    <td>Energy Expenditure</td>
-                    <td>{Math.round(day.strain.kilojoules * 100 / 4.184) / 100} kcal</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>Sleep Day</td>
+                        <td>{start.format("HH:mm:ss (dd)")} - {end.isValid() ? end.format("HH:mm:ss (dd)") : null}</td>
+                    </tr>
+                    <tr>
+                        <td>Energy Expenditure</td>
+                        <td>{Math.round(day.strain.kilojoules * 100 / 4.184) / 100} kcal</td>
+                    </tr>
+                </tbody>
             </table>
         </div>;
     }
@@ -196,14 +198,17 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
             return <div>
                 <strong>Computed Statistics</strong>
                 <table>
-                    <tr>
-                        <td>Day</td>
-                        <td>{start.format("HH:mm:ss (dd)")} - {end.isValid() ? end.format("HH:mm:ss (dd)") : null}</td>
-                    </tr>
-                    <tr>
-                        <td>Energy Expenditure</td>
-                        <td>{Math.round(dailyEnergyExpenditure * 100) / 100} kcal</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Day</td>
+                            <td>{start.format("HH:mm:ss (dd)")} - {end.isValid()
+                                ? end.format("HH:mm:ss (dd)") : null}</td>
+                        </tr>
+                        <tr>
+                            <td>Energy Expenditure</td>
+                            <td>{Math.round(dailyEnergyExpenditure * 100) / 100} kcal</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>;
         }
