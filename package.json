@@ -32,6 +32,9 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^4.2.2"
   },
+  "peerDependencies": {
+    "postcss": "^8.3.0"
+  },
   "dependencies": {
     "moment": "^2.26.0",
     "plotly.js": "^1.54.1",
