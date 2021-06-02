@@ -16,15 +16,22 @@ enum DayType {
     SLEEP = "sleep",
 }
 
+interface IPnoeState {
+    r1Const?: number;
+    r2LowerBound?: number;
+    r2Const?: number;
+    r2Multiplier?: number;
+    r3LowerBound?: number;
+    r3Const?: number;
+    r3Multiplier?: number;
+}
+
 interface IHeartRateState {
     day?: whoop.IDay;
     dayType: DayType;
     date: Date;
     hr?: IHeartRateDay;
-    rmr?: number;
-    shr?: number;
-    x0?: number;
-    x1?: number;
+    pnoe: IPnoeState;
 }
 
 interface IEnergyExpenditureDatum {
@@ -41,6 +48,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     public state: IHeartRateState = {
         date: now,
         dayType: DayType.SLEEP,
+        pnoe: {},
     };
 
     public componentDidMount() {
@@ -48,32 +56,14 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
             this.getData();
         }
         let updatedState = {};
-        // TODO(markelliot) make functions to do this
-        if (!this.state.rmr) {
-            const rmr = localStorage.getItem("pnoe.rmr");
-            if (rmr) {
-                updatedState = { ...updatedState, rmr: Number(rmr) };
-            }
-        }
-        if (!this.state.shr) {
-            const shr = localStorage.getItem("pnoe.shr");
-            if (shr) {
-                updatedState = { ...updatedState, shr: Number(shr) };
-            }
-        }
-        if (!this.state.x0) {
-            const x0 = localStorage.getItem("pnoe.x0");
-            if (x0) {
-                updatedState = { ...updatedState, x0: Number(x0) };
-            }
-        }
-        if (!this.state.x1) {
-            const x1 = localStorage.getItem("pnoe.x1");
-            if (x1) {
-                updatedState = { ...updatedState, x1: Number(x1) };
-            }
-        }
-        this.setState({ ...this.state, ...updatedState });
+        updatedState = this.getStateFromLocalStorage(updatedState, "r1Const");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r2LowerBound");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r2Const");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r2Multiplier");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r3LowerBound");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r3Const");
+        updatedState = this.getStateFromLocalStorage(updatedState, "r3Multiplier");
+        this.setState({ ...this.state, pnoe: updatedState });
     }
 
     public render() {
@@ -81,15 +71,13 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         const energyExpenditure: IEnergyExpenditureDatum[] = [];
         const cumEnergyExpenditure: IEnergyExpenditureDatum[] = [];
         let dailyEnergyExpenditure = -1;
-        if (this.state.rmr && this.state.shr && this.state.x0 && this.state.x1 && this.state.hr) {
+        if (this.isPnoeStateSet() && this.state.hr) {
             // calculate
             dailyEnergyExpenditure = 0;
             const hr = this.state.hr.hr;
             for (let i = 5; i < hr.length; i++) {
-                // const deltaTime = hr[i].time - hr[i - 5].time; // milliseconds
                 const deltaTime = 60000;
                 const bpm = (hr[i].bpm + hr[i - 1].bpm + hr[i - 2].bpm + hr[i - 3].bpm + hr[i - 4].bpm) / 5;
-                // if (deltaTime < 60000 * 5.1) {
                 const ee = this.energyExpenditure(bpm) * (deltaTime / 60000);
                 energyExpenditure.push({
                     energyExpenditure: ee,
@@ -100,24 +88,44 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                     energyExpenditure: dailyEnergyExpenditure,
                     time: hr[i].time,
                 });
-                // }
             }
         }
 
         return (
             <div className="heartRate">
                 <div className="controls">
-                    <FormGroup label="Resting Metabolic Rate (kcal/min)" labelFor="rmr">
-                        <NumericInput id="rmr" value={this.state.rmr} onValueChange={this.updateRmr} />
+                    <FormGroup label="Resting Metabolic Rate (kcal/min)" labelFor="r1Const">
+                        <NumericInput id="r1Const" value={this.state.pnoe.r1Const} onValueChange={this.updateR1Const} />
                     </FormGroup>
-                    <FormGroup label="Starting Heart Rate (bpm)" labelFor="shr">
-                        <NumericInput id="shr" value={this.state.shr} onValueChange={this.updateShr} />
+                    <FormGroup label="Region 2 HR Lower Bound (bpm)" labelFor="r2LowerBound">
+                        <NumericInput id="r2LowerBound"
+                            value={this.state.pnoe.r2LowerBound}
+                            onValueChange={this.updateR2LowerBound} />
                     </FormGroup>
-                    <FormGroup label="PNOE Regression Coeff x0" labelFor="x0">
-                        <NumericInput id="x0" value={this.state.x0} onValueChange={this.updateX0} />
+                    <FormGroup label="Region 2 Constant" labelFor="r2Const">
+                        <NumericInput id="r2Const"
+                            value={this.state.pnoe.r2Const}
+                            onValueChange={this.updateR2Const} />
                     </FormGroup>
-                    <FormGroup label="PNOE Regression Coeff x1" labelFor="x1">
-                        <NumericInput id="x1" value={this.state.x1} onValueChange={this.updateX1} />
+                    <FormGroup label="Region 2 HR Factor" labelFor="r2Multiplier">
+                        <NumericInput id="r2Multiplier"
+                            value={this.state.pnoe.r2Multiplier}
+                            onValueChange={this.updateR2Multiplier} />
+                    </FormGroup>
+                    <FormGroup label="Region 3 HR Lower Bound (bpm)" labelFor="r2LowerBound">
+                        <NumericInput id="r3LowerBound"
+                            value={this.state.pnoe.r3LowerBound}
+                            onValueChange={this.updateR3LowerBound} />
+                    </FormGroup>
+                    <FormGroup label="Region 3 Constant" labelFor="r2Const">
+                        <NumericInput id="r3Const"
+                            value={this.state.pnoe.r3Const}
+                            onValueChange={this.updateR3Const} />
+                    </FormGroup>
+                    <FormGroup label="Region 3 HR Factor" labelFor="r2Multiplier">
+                        <NumericInput id="r3Multiplier"
+                            value={this.state.pnoe.r3Multiplier}
+                            onValueChange={this.updateR3Multiplier} />
                     </FormGroup>
                 </div>
                 <div className="controls">
@@ -167,6 +175,22 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
                 </div>
             </div>
         );
+    }
+
+    private getStateFromLocalStorage(updatedState: IPnoeState, item: keyof IPnoeState) {
+        if (this.state.pnoe[item] === undefined) {
+            const value = localStorage.getItem("pnoe." + item);
+            if (value) {
+                updatedState[item] = Number(value);
+            }
+        }
+        return updatedState;
+    }
+
+    private isPnoeStateSet() {
+        return this.state.pnoe.r1Const
+                && this.state.pnoe.r2Const && this.state.pnoe.r2LowerBound && this.state.pnoe.r2Multiplier
+                && this.state.pnoe.r3Const && this.state.pnoe.r3LowerBound && this.state.pnoe.r3Multiplier;
     }
 
     private daySummary(day: whoop.IDay) {
@@ -291,38 +315,63 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private energyExpenditure = (heartRate: number): number => {
-        if (this.state.shr! < heartRate) {
-            return this.state.x0! + this.state.x1! * heartRate;
-        } else {
-            return this.state.rmr!;
+        if (heartRate < this.state.pnoe.r2LowerBound!) {
+            return this.state.pnoe.r1Const!;
+        }
+
+        if (heartRate < this.state.pnoe.r3LowerBound!) {
+            return this.state.pnoe.r2Multiplier! * heartRate + this.state.pnoe.r2Const!;
+        }
+
+        return this.state.pnoe.r3Multiplier! * heartRate + this.state.pnoe.r3Const!;
+    }
+
+    private updateR1Const = (r1Const: number) => {
+        if (!isNaN(r1Const)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r1Const} });
+            localStorage.setItem("pnoe.r1Const", String(r1Const));
         }
     }
 
-    private updateRmr = (rmr: number) => {
-        if (!isNaN(rmr)) {
-            this.setState({ ...this.state, rmr });
-            localStorage.setItem("pnoe.rmr", String(rmr));
+    private updateR2LowerBound = (r2LowerBound: number) => {
+        if (!isNaN(r2LowerBound)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r2LowerBound} });
+            localStorage.setItem("pnoe.r2LowerBound", String(r2LowerBound));
         }
     }
 
-    private updateShr = (shr: number) => {
-        if (!isNaN(shr)) {
-            this.setState({ ...this.state, shr });
-            localStorage.setItem("pnoe.shr", String(shr));
+    private updateR2Const = (r2Const: number) => {
+        if (!isNaN(r2Const)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r2Const} });
+            localStorage.setItem("pnoe.r2Const", String(r2Const));
         }
     }
 
-    private updateX0 = (x0: number) => {
-        if (!isNaN(x0)) {
-            this.setState({ ...this.state, x0 });
-            localStorage.setItem("pnoe.x0", String(x0));
+    private updateR2Multiplier = (r2Multiplier: number) => {
+        if (!isNaN(r2Multiplier)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r2Multiplier} });
+            localStorage.setItem("pnoe.r2Multiplier", String(r2Multiplier));
         }
     }
 
-    private updateX1 = (x1: number) => {
-        if (!isNaN(x1)) {
-            this.setState({ ...this.state, x1 });
-            localStorage.setItem("pnoe.x1", String(x1));
+    private updateR3LowerBound = (r3LowerBound: number) => {
+        if (!isNaN(r3LowerBound)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r3LowerBound} });
+            localStorage.setItem("pnoe.r3LowerBound", String(r3LowerBound));
+        }
+    }
+
+    private updateR3Const = (r3Const: number) => {
+        if (!isNaN(r3Const)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r3Const} });
+            localStorage.setItem("pnoe.r3Const", String(r3Const));
+        }
+    }
+
+    private updateR3Multiplier = (r3Multiplier: number) => {
+        if (!isNaN(r3Multiplier)) {
+            this.setState({ ...this.state, pnoe: {...this.state.pnoe, r3Multiplier} });
+            localStorage.setItem("pnoe.r3Multiplier", String(r3Multiplier));
         }
     }
 
