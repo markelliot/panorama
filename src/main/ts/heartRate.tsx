@@ -94,7 +94,7 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
         return (
             <div className="heartRate">
                 <div className="controls">
-                    <FormGroup label="Resting Metabolic Rate (kcal/min)" labelFor="r1Const">
+                    <FormGroup label="Resting Metabolic Rate (kcal/day)" labelFor="r1Const">
                         <NumericInput id="r1Const" value={this.state.pnoe.r1Const} onValueChange={this.updateR1Const} />
                     </FormGroup>
                     <FormGroup label="Region 2 HR Lower Bound (bpm)" labelFor="r2LowerBound">
@@ -316,14 +316,14 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
 
     private energyExpenditure = (heartRate: number): number => {
         if (heartRate < this.state.pnoe.r2LowerBound!) {
-            return this.state.pnoe.r1Const!;
+            return this.state.pnoe.r1Const! / 1440;
         }
 
         if (heartRate < this.state.pnoe.r3LowerBound!) {
-            return this.state.pnoe.r2Multiplier! * heartRate + this.state.pnoe.r2Const!;
+            return (this.state.pnoe.r2Multiplier! * heartRate + this.state.pnoe.r2Const!) / 1440;
         }
 
-        return this.state.pnoe.r3Multiplier! * heartRate + this.state.pnoe.r3Const!;
+        return (this.state.pnoe.r3Multiplier! * heartRate + this.state.pnoe.r3Const!) / 1440;
     }
 
     private updateR1Const = (r1Const: number) => {
