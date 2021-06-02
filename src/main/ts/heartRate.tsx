@@ -359,12 +359,8 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private updateR2LowerBound = (num: number, r2LowerBound: string) => {
-        if (r2LowerBound) {
-            localStorage.setItem("pnoe.r2LowerBound", r2LowerBound);
-            this.setState({ ...this.state, form: {...this.state.form, r2LowerBound} });
-        } else {
-            localStorage.removeItem("pnoe.r2LowerBound");
-        }
+        localStorage.setItem("pnoe.r2LowerBound", r2LowerBound);
+        this.setState({ ...this.state, form: {...this.state.form, r2LowerBound} });
     }
 
     private updateR2Const = (num: number, r2Const: string) => {
@@ -378,30 +374,18 @@ export class HeartRate extends React.Component<IHeartRateProps, IHeartRateState>
     }
 
     private updateR3LowerBound = (num: number, r3LowerBound: string) => {
-        if (r3LowerBound) {
-            localStorage.setItem("pnoe.r3LowerBound", r3LowerBound);
-            this.setState({ ...this.state, form: {...this.state.form, r3LowerBound} });
-        } else {
-            localStorage.removeItem("pnoe.r3LowerBound");
-        }
+        localStorage.setItem("pnoe.r3LowerBound", r3LowerBound);
+        this.setState({ ...this.state, form: {...this.state.form, r3LowerBound} });
     }
 
     private updateR3Const = (num: number, r3Const: string) => {
-        if (r3Const) {
-            localStorage.setItem("pnoe.r3Const", r3Const);
-            this.setState({ ...this.state, form: {...this.state.form, r3Const} });
-        } else {
-            localStorage.removeItem("pnoe.r3Const");
-        }
+        localStorage.setItem("pnoe.r3Const", r3Const);
+        this.setState({ ...this.state, form: {...this.state.form, r3Const} });
     }
 
     private updateR3Multiplier = (num: number, r3Multiplier: string) => {
-        if (r3Multiplier) {
-            localStorage.setItem("pnoe.r3Multiplier", r3Multiplier);
-            this.setState({ ...this.state, form: {...this.state.form, r3Multiplier} });
-        } else {
-            localStorage.removeItem("pnoe.r3Multiplier");
-        }
+        localStorage.setItem("pnoe.r3Multiplier", r3Multiplier);
+        this.setState({ ...this.state, form: {...this.state.form, r3Multiplier} });
     }
 
     private updateObservationDate = (date: Date) => {
