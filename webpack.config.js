@@ -7,7 +7,7 @@ module.exports = {
     entry: "./src/main/ts/app.tsx",
     output: {
         path: path.join(__dirname, "build/assets"),
-        filename: "bundle.js",
+        filename: "bundle.[contenthash].js",
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".scss"],
