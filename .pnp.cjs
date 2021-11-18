@@ -51,7 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:4.0.0"],
             ["html-webpack-plugin", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:5.5.0"],
             ["moment", "npm:2.29.1"],
-            ["plotly.js", "npm:2.6.2"],
+            ["plotly.js", "npm:2.6.3"],
             ["prettier", "npm:2.4.1"],
             ["process", "npm:0.11.10"],
             ["prop-types", "npm:15.7.2"],
@@ -5253,7 +5253,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:4.0.0"],
             ["html-webpack-plugin", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:5.5.0"],
             ["moment", "npm:2.29.1"],
-            ["plotly.js", "npm:2.6.2"],
+            ["plotly.js", "npm:2.6.3"],
             ["prettier", "npm:2.4.1"],
             ["process", "npm:0.11.10"],
             ["prop-types", "npm:15.7.2"],
@@ -6410,10 +6410,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["plotly.js", [
-        ["npm:2.6.2", {
-          "packageLocation": "./.yarn/cache/plotly.js-npm-2.6.2-07cfbb6ad4-c15c288f58.zip/node_modules/plotly.js/",
+        ["npm:2.6.3", {
+          "packageLocation": "./.yarn/cache/plotly.js-npm-2.6.3-92d281104d-f25c0219c3.zip/node_modules/plotly.js/",
           "packageDependencies": [
-            ["plotly.js", "npm:2.6.2"],
+            ["plotly.js", "npm:2.6.3"],
             ["@plotly/d3", "npm:3.8.0"],
             ["@plotly/d3-sankey", "npm:0.7.2"],
             ["@plotly/d3-sankey-circular", "npm:0.33.1"],
@@ -6989,7 +6989,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-plotly.js", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:2.5.1"],
             ["@types/plotly.js", "npm:1.54.16"],
             ["@types/react", "npm:17.0.35"],
-            ["plotly.js", "npm:2.6.2"],
+            ["plotly.js", "npm:2.6.3"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.2"]
           ],

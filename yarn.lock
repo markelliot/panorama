@@ -4316,7 +4316,7 @@ fsevents@~2.3.2:
     eslint-plugin-prettier: ^4.0.0
     html-webpack-plugin: ^5.5.0
     moment: ^2.29.1
-    plotly.js: ^2.6.2
+    plotly.js: ^2.6.3
     prettier: ^2.4.1
     process: ^0.11.10
     prop-types: ^15.7.2
@@ -5349,9 +5349,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"plotly.js@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "plotly.js@npm:2.6.2"
+"plotly.js@npm:^2.6.3":
+  version: 2.6.3
+  resolution: "plotly.js@npm:2.6.3"
   dependencies:
     "@plotly/d3": 3.8.0
     "@plotly/d3-sankey": 0.7.2
@@ -5401,7 +5401,7 @@ fsevents@~2.3.2:
     topojson-client: ^3.1.0
     webgl-context: ^2.2.0
     world-calendars: ^1.0.3
-  checksum: c15c288f58e7ec4e4855bc7c9ac278644acb1d11c351a5f65b8fb11e749d3db18cc6d7879c09b18cf38d658df43d293e04d84b14dff25fbc45d800a0b1f3ebad
+  checksum: f25c0219c3b2e206ed7a412eabdd33c56ad913bc0c65605f280d4b268f8334daf4acf6274591e8ede417641c7a695b22db5d746657aee240078c38a690b2f3a1
   languageName: node
   linkType: hard
 
