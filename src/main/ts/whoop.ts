@@ -4,106 +4,111 @@ const baseUrl = "https://api-7.whoop.com";
 const corsSafeBaseUrl = "https://panorama.markelliot.workers.dev";
 
 export interface IWhoopToken {
-    token: string;
-    userId: string;
-    validUntil: Date;
+  token: string;
+  userId: string;
+  validUntil: Date;
 }
 
 export interface IHeartRateDatum {
-    time: number;
-    bpm: number;
+  time: number;
+  bpm: number;
 }
 
 export interface IHeartRateDay {
-    hr: IHeartRateDatum[];
-    start: Date;
-    end: Date;
+  hr: IHeartRateDatum[];
+  start: Date;
+  end: Date;
 }
 
 export interface IDay {
-    during: ITimeRange;
-    strain: IStrain;
+  during: ITimeRange;
+  strain: IStrain;
 }
 
 export interface ITimeRange {
-    bounds: string;
-    lower: string;
-    upper: string;
+  bounds: string;
+  lower: string;
+  upper: string;
 }
 
 export interface IStrain {
-    averageHeartRate: number;
-    maxHeartRate: number;
-    kilojoules: number;
+  averageHeartRate: number;
+  maxHeartRate: number;
+  kilojoules: number;
 }
 
 function params(params: { [key: string]: string }) {
-    return Object.entries(params)
-        .map(kv => `${kv[0]}=${kv[1]}`)
-        .reduce((acc, item) => acc = acc + "&" + item);
+  return Object.entries(params)
+    .map((kv) => `${kv[0]}=${kv[1]}`)
+    .reduce((acc, item) => (acc = acc + "&" + item));
 }
 
 export function login(email: string, password: string): Promise<IWhoopToken> {
-    return fetch(`${baseUrl}/oauth/token`, {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            username: email,
-            password: password,
-            grant_type: "password",
-            issueRefresh: "false",
-        }),
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json);
-            const validUntil = new Date();
-            validUntil.setSeconds(validUntil.getSeconds() + json.expires_in);
-            return {
-                token: json.access_token,
-                userId: json.user.id,
-                validUntil: validUntil,
-            };
-        });
+  return fetch(`${baseUrl}/oauth/token`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      username: email,
+      password: password,
+      grant_type: "password",
+      issueRefresh: "false",
+    }),
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      const validUntil = new Date();
+      validUntil.setSeconds(validUntil.getSeconds() + json.expires_in);
+      return {
+        token: json.access_token,
+        userId: json.user.id,
+        validUntil: validUntil,
+      };
+    });
 }
 
 function safeGet(token: IWhoopToken, url: string) {
-    return fetch(`${corsSafeBaseUrl}${url}`,
-        {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${token.token}`
-            }
-        })
-        .then((response) => response.json());
+  return fetch(`${corsSafeBaseUrl}${url}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token.token}`,
+    },
+  }).then((response) => response.json());
 }
 
 export function sleepCycle(token: IWhoopToken, day: Date) {
-    const query = params({
-        start: day.toISOString(),
-        end: day.toISOString()
-    });
-    return safeGet(token, `/users/${token.userId}/cycles?${query}`)
-        .then((json) => json as IDay[]);
+  const query = params({
+    start: day.toISOString(),
+    end: day.toISOString(),
+  });
+  return safeGet(token, `/users/${token.userId}/cycles?${query}`).then(
+    (json) => json as IDay[]
+  );
 }
 
-export function heartRate(token: IWhoopToken, start: Date, end: Date): Promise<IHeartRateDay> {
-    const query = params({
-        step: "60",
-        start: start.toISOString(),
-        end: end.toISOString()
+export function heartRate(
+  token: IWhoopToken,
+  start: Date,
+  end: Date
+): Promise<IHeartRateDay> {
+  const query = params({
+    step: "60",
+    start: start.toISOString(),
+    end: end.toISOString(),
+  });
+  return safeGet(
+    token,
+    `/users/${token.userId}/metrics/heart_rate?${query}`
+  ).then((json) => {
+    const hr: IHeartRateDatum[] = json.values.map((datum: any) => {
+      return { time: datum.time, bpm: Number(datum.data) ?? 0 };
     });
-    return safeGet(token, `/users/${token.userId}/metrics/heart_rate?${query}`)
-        .then((json) => {
-            const hr: IHeartRateDatum[] = json.values.map((datum: any) => {
-                return { time: datum.time, bpm: Number(datum.data) ?? 0 };
-            });
-            return {
-                hr,
-                start,
-                end
-            }
-        });
+    return {
+      hr,
+      start,
+      end,
+    };
+  });
 }

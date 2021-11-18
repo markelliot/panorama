@@ -4,39 +4,39 @@
 @import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 
 .heartRate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .display {
+    min-height: 300px;
+    width: 100%;
+    background-color: $light-gray3;
+    padding: $pt-grid-size;
+  }
+
+  .controls {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: $pt-grid-size;
 
-    .display {
-        min-height: 300px;
-        width: 100%;
-        background-color: $light-gray3;
-        padding: $pt-grid-size;
+    > div {
+      padding-left: $pt-grid-size;
+      padding-right: $pt-grid-size;
+      display: block;
     }
+  }
 
-    .controls {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding-top: $pt-grid-size;
+  .summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-        > div {
-            padding-left: $pt-grid-size;
-            padding-right: $pt-grid-size;
-            display: block;
-        }
+    > div {
+      padding: $pt-grid-size;
+      display: block;
     }
-
-    .summary {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        > div {
-            padding: $pt-grid-size;
-            display: block;
-        }
-    }
+  }
 }
