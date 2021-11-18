@@ -39,7 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@blueprintjs/datetime", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:3.23.18"],
             ["@blueprintjs/icons", "npm:3.31.0"],
             ["@types/plotly.js", "npm:1.54.16"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/react-dom", "npm:17.0.11"],
             ["@types/react-plotly.js", "npm:2.5.0"],
             ["@typescript-eslint/eslint-plugin", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:5.4.0"],
@@ -137,7 +137,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@blueprintjs/colors", "npm:4.0.0-beta.2"],
             ["@blueprintjs/icons", "npm:3.31.0"],
             ["@types/dom4", "npm:2.0.2"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/react-dom", "npm:17.0.11"],
             ["classnames", "npm:2.3.1"],
             ["dom4", "npm:2.1.6"],
@@ -173,7 +173,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@blueprintjs/datetime", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:3.23.18"],
             ["@blueprintjs/core", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:3.51.3"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/react-dom", "npm:17.0.11"],
             ["classnames", "npm:2.3.1"],
             ["react", "npm:17.0.2"],
@@ -273,7 +273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@hypnosphi/create-react-context", "virtual:2e2f00dadb2419cea89bc84e53ce91cfda800bf2de9247d75cbe477938dac1e5f2a2e899f058846426ad2f7fc502a32497636702f59dbbad186c927ed7d778e1#npm:0.3.1"],
             ["@types/prop-types", null],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["gud", "npm:1.0.0"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.2"],
@@ -672,10 +672,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:17.0.34", {
-          "packageLocation": "./.yarn/cache/@types-react-npm-17.0.34-7a53209557-16729ad7d5.zip/node_modules/@types/react/",
+        ["npm:17.0.35", {
+          "packageLocation": "./.yarn/cache/@types-react-npm-17.0.35-8b4fbd1f1d-33e2bf8068.zip/node_modules/@types/react/",
           "packageDependencies": [
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/prop-types", "npm:15.7.4"],
             ["@types/scheduler", "npm:0.16.2"],
             ["csstype", "npm:3.0.8"]
@@ -5241,7 +5241,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@blueprintjs/datetime", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:3.23.18"],
             ["@blueprintjs/icons", "npm:3.31.0"],
             ["@types/plotly.js", "npm:1.54.16"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/react-dom", "npm:17.0.11"],
             ["@types/react-plotly.js", "npm:2.5.0"],
             ["@typescript-eslint/eslint-plugin", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:5.4.0"],
@@ -6921,7 +6921,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/react-day-picker-virtual-a8dd8fcc7e/0/cache/react-day-picker-npm-7.4.9-8853eff118-d86e459c0b.zip/node_modules/react-day-picker/",
           "packageDependencies": [
             ["react-day-picker", "virtual:78bf4b480db76d8822908c451e176b062060f48c2e94f0bd9538e6bb407288787a07c72164443af12600a447e64c7445c653f5bda172f168899f6148be066065#npm:7.4.9"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.2"]
           ],
@@ -6944,7 +6944,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/react-dom-virtual-562a5162e5/0/cache/react-dom-npm-17.0.2-f551215af1-1c1eaa3bca.zip/node_modules/react-dom/",
           "packageDependencies": [
             ["react-dom", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:17.0.2"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["loose-envify", "npm:1.4.0"],
             ["object-assign", "npm:4.1.1"],
             ["react", "npm:17.0.2"],
@@ -6988,7 +6988,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["react-plotly.js", "virtual:9a62f44f4784fc1d028cc47197f34a717a749510dab407872762a910f78e8ac8c436ffa36a7e1bd20842ee8abf35a4fa54af3547a7c4bf170a6272ad2449d84e#npm:2.5.1"],
             ["@types/plotly.js", "npm:1.54.16"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["plotly.js", "npm:2.6.2"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.2"]
@@ -7016,7 +7016,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-popper", "virtual:e831d83f0477f776a43ddcb35e1747651799792e2762fabda494d1e89be5c35fb03fac5f74ce773171eb3d696d88f43e1b39f87c93d7fdb6f704ac2b2d1947d8#npm:1.3.11"],
             ["@babel/runtime", "npm:7.14.8"],
             ["@hypnosphi/create-react-context", "virtual:2e2f00dadb2419cea89bc84e53ce91cfda800bf2de9247d75cbe477938dac1e5f2a2e899f058846426ad2f7fc502a32497636702f59dbbad186c927ed7d778e1#npm:0.3.1"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["deep-equal", "npm:1.1.1"],
             ["popper.js", "npm:1.16.1"],
             ["prop-types", "npm:15.7.2"],
@@ -7043,7 +7043,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/react-transition-group-virtual-2b071d15ce/0/cache/react-transition-group-npm-2.9.0-fe7767fa8d-d8c9e50aab.zip/node_modules/react-transition-group/",
           "packageDependencies": [
             ["react-transition-group", "virtual:e831d83f0477f776a43ddcb35e1747651799792e2762fabda494d1e89be5c35fb03fac5f74ce773171eb3d696d88f43e1b39f87c93d7fdb6f704ac2b2d1947d8#npm:2.9.0"],
-            ["@types/react", "npm:17.0.34"],
+            ["@types/react", "npm:17.0.35"],
             ["@types/react-dom", "npm:17.0.11"],
             ["dom-helpers", "npm:3.4.0"],
             ["loose-envify", "npm:1.4.0"],
