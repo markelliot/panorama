@@ -4350,7 +4350,7 @@ fsevents@~2.3.2:
     eslint-plugin-prettier: ^4.0.0
     html-webpack-plugin: ^5.5.0
     moment: ^2.29.1
-    plotly.js: ^2.6.4
+    plotly.js: ^2.7.0
     prettier: ^2.5.0
     process: ^0.11.10
     prop-types: ^15.7.2
@@ -5358,9 +5358,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"plotly.js@npm:^2.6.4":
-  version: 2.6.4
-  resolution: "plotly.js@npm:2.6.4"
+"plotly.js@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "plotly.js@npm:2.7.0"
   dependencies:
     "@plotly/d3": 3.8.0
     "@plotly/d3-sankey": 0.7.2
@@ -5396,7 +5396,7 @@ fsevents@~2.3.2:
     native-promise-only: ^0.8.1
     parse-svg-path: ^0.1.2
     polybooljs: ^1.2.0
-    probe-image-size: ^7.2.1
+    probe-image-size: ^7.2.2
     regl: ^2.1.0
     regl-error2d: ^2.0.12
     regl-line2d: ^3.1.2
@@ -5410,7 +5410,7 @@ fsevents@~2.3.2:
     topojson-client: ^3.1.0
     webgl-context: ^2.2.0
     world-calendars: ^1.0.3
-  checksum: 1a2f138a903923b357a6ae37fb42e7d5cef5ee6db6a7d05fc66549ada83cb78311d325992cf9d9897ac389546db2d72d7e72d9e5daa405beeae1cacf1d4b5ee2
+  checksum: dac99d429b88b287a324a8ae08055013766060295f55e96aea6801f3e2bf09c90c217a77049e87b7131f3ab6ae3a811534ec041f0ffad093719ea01cecdae6a9
   languageName: node
   linkType: hard
 
@@ -5560,14 +5560,14 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"probe-image-size@npm:^7.2.1":
-  version: 7.2.1
-  resolution: "probe-image-size@npm:7.2.1"
+"probe-image-size@npm:^7.2.2":
+  version: 7.2.2
+  resolution: "probe-image-size@npm:7.2.2"
   dependencies:
     lodash.merge: ^4.6.2
     needle: ^2.5.2
     stream-parser: ~0.3.1
-  checksum: a902c4fb23c7cf75d6e7717adf51de9ba4b19388945b195a7baba92befee4a032d2953dc9b7414db7f9d954a952f69cd5067642b5ac79a1a540c9429c8846e78
+  checksum: 2cbc908fb16d3c2815cad04c42341a99b43d2f6a9e776d9b87c57f6257f715869d02dcff1c79c72df87cf716d9de77247ed8e806c021e72666a66744998ec8a3
   languageName: node
   linkType: hard
 
