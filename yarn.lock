@@ -4339,14 +4339,14 @@ fsevents@~2.3.2:
     eslint-plugin-prettier: ^4.0.0
     html-webpack-plugin: ^5.5.0
     moment: ^2.29.1
-    plotly.js: ^2.7.0
+    plotly.js: ^2.8.0
     prettier: ^2.5.1
     process: ^0.11.10
     prop-types: ^15.7.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-plotly.js: ^2.5.1
-    sass: ^1.44.0
+    sass: ^1.45.0
     sass-loader: ^12.4.0
     style-loader: ^3.3.1
     ts-loader: ^9.2.6
@@ -5347,9 +5347,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"plotly.js@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "plotly.js@npm:2.7.0"
+"plotly.js@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "plotly.js@npm:2.8.0"
   dependencies:
     "@plotly/d3": 3.8.0
     "@plotly/d3-sankey": 0.7.2
@@ -5399,7 +5399,7 @@ fsevents@~2.3.2:
     topojson-client: ^3.1.0
     webgl-context: ^2.2.0
     world-calendars: ^1.0.3
-  checksum: dac99d429b88b287a324a8ae08055013766060295f55e96aea6801f3e2bf09c90c217a77049e87b7131f3ab6ae3a811534ec041f0ffad093719ea01cecdae6a9
+  checksum: f13812d1e01e965563c49864b9ea7771f523831f819b00501a123968613ad2fa7b3b1e1e0a7e673b6d4f8485dc8f9a70bf1208dd509be9625b66a16fda78df17
   languageName: node
   linkType: hard
 
@@ -6216,15 +6216,16 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.44.0":
-  version: 1.44.0
-  resolution: "sass@npm:1.44.0"
+"sass@npm:^1.45.0":
+  version: 1.45.0
+  resolution: "sass@npm:1.45.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
+    source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 35b5b21ee5f9ca4012793052c203df0b4114f33b8c33bb4cba21c90d3141337a8a19e3ed934f2c783ace80a3534333c5248dc1a2f2e5ba45ce326591d3a08051
+  checksum: f20d22ddf91e3571926535cdec9e1092780b0bf133ee6a68d25ee21fd3fcb94f4b1df90823fdc60cabf468776d3a6bb693fd89305698e70609eb47bcfb905f10
   languageName: node
   linkType: hard
 
@@ -6471,6 +6472,13 @@ resolve@^0.6.1:
     ip: ^1.1.5
     smart-buffer: ^4.1.0
   checksum: 2ca9d616e424f645838ebaabb04f85d94ea999e0f8393dc07f86c435af22ed88cb83958feeabd1bb7bc537c635ed47454255635502c6808a6df61af1f41af750
+  languageName: node
+  linkType: hard
+
+"source-map-js@npm:>=0.6.2 <2.0.0":
+  version: 1.0.1
+  resolution: "source-map-js@npm:1.0.1"
+  checksum: 22606113d62bbd468712b0cb0c46e9a8629de7eb081049c62a04d977a211abafd7d61455617f8b78daba0b6c0c7e7c88f8c6b5aaeacffac0a6676ecf5caac5ce
   languageName: node
   linkType: hard
 
