@@ -4478,21 +4478,21 @@ fsevents@~2.3.2:
     eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.0.0
     html-webpack-plugin: ^5.5.0
-    moment: ^2.29.1
+    moment: ^2.29.2
     plotly.js: ^2.11.1
-    prettier: ^2.6.1
+    prettier: ^2.6.2
     process: ^0.11.10
     prop-types: ^15.8.1
     react: ^18.0.0
     react-dom: ^18.0.0
     react-plotly.js: ^2.5.1
-    sass: ^1.49.9
+    sass: ^1.49.11
     sass-loader: ^12.6.0
     style-loader: ^3.3.1
     ts-loader: ^9.2.8
     tslint: ^6.1.3
     typescript: ^4.6.3
-    webpack: ^5.70.0
+    webpack: ^5.71.0
     webpack-cli: ^4.9.2
     webpack-dev-server: ^4.7.4
     webpack-merge: ^5.8.0
@@ -4879,10 +4879,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.29.1":
-  version: 2.29.1
-  resolution: "moment@npm:2.29.1"
-  checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
+"moment@npm:^2.29.2":
+  version: 2.29.2
+  resolution: "moment@npm:2.29.2"
+  checksum: ee850b5776485e2af0775ceb3cfebaa7d7638f0a750fe0678fcae24c310749f96c1938808384bd422a55e5703834a71fcb09c8a1d36d9cf847f6ed0205d7a3e5
   languageName: node
   linkType: hard
 
@@ -5684,12 +5684,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "prettier@npm:2.6.1"
+"prettier@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "prettier@npm:2.6.2"
   bin:
     prettier: bin-prettier.js
-  checksum: 78be1f8a3ddfad7c3d8a854b6c8941a3bb1ddfca4225c38d778e0fe1029a55368f71b3bbefff82c689015fbb4d391ec44add957f01308ad2725e01a7c1f37cb6
+  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
   languageName: node
   linkType: hard
 
@@ -6368,16 +6368,16 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.49.9":
-  version: 1.49.9
-  resolution: "sass@npm:1.49.9"
+"sass@npm:^1.49.11":
+  version: 1.49.11
+  resolution: "sass@npm:1.49.11"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: e5653e3499274c5127dcb5c9e7c5f6930378fc61764d999a5d8965782e027181ed09714f94836dec74ef55e3a858107fe6c571954c0cab0ad0be5ab8e586829c
+  checksum: f81cabfc43d6baf710979d647e24019f7cfb68242f8421d20dfc8c864cf83512b0b74a89098331696f758756829cb736f7b8aca70a11cff365928393ae351bcc
   languageName: node
   linkType: hard
 
@@ -7733,9 +7733,9 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.70.0":
-  version: 5.70.0
-  resolution: "webpack@npm:5.70.0"
+"webpack@npm:^5.71.0":
+  version: 5.71.0
+  resolution: "webpack@npm:5.71.0"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^0.0.51
@@ -7766,7 +7766,7 @@ resolve@^0.6.1:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 00439884a9cdd5305aed3ce93735635785a15c5464a6d2cfce87e17727a07585de02420913e82aa85ddd2ae7322175d2cfda6ac0878a17f061cb605e6a7db57a
+  checksum: 84b273a15180d45dafe4fc4a3ccccba2f72210f327a1af39713b3ef78148768afb0e18fa0cddaea4af5dd54ace199fbbdfcef9aec8da7e9c248f8b1b7cc413e1
   languageName: node
   linkType: hard
 
