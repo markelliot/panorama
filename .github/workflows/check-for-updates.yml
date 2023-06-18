@@ -2,23 +2,28 @@ name: Update Deps
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '0 0/6 * * *'
+    - cron: '0 10 * * *'
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Generate token
+        id: token
+        uses: tibdex/github-app-token@v1
         with:
-          token: ${{ secrets.GH_PUSH_TO_REPO_TOKEN }}
+          app_id: ${{ secrets.MELLBOT_APP_ID }}
+          private_key: ${{ secrets.MELLBOT_PK }}
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ steps.token.outputs.token }}
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '17'
+          node-version: '16'
           cache: 'yarn'
       - uses: markelliot/update-yarn-deps@v1
         with:
-          push-to-repo-token: ${{ secrets.GH_PUSH_TO_REPO_TOKEN }}
-          commit-user: mellbot
-          commit-email: mellbot@users.noreply.github.com
-
+          push-to-repo-token: ${{ steps.token.outputs.token }}
+          commit-user: melliotbot[bot]
+          commit-email: melliotbot[bot]@users.noreply.github.com
