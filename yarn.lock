@@ -1582,9 +1582,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001503":
-  version: 1.0.30001507
-  resolution: "caniuse-lite@npm:1.0.30001507"
-  checksum: 7044172bdf65140c927cdaaff50368a97676f06a9fd8b515c046613bdf52cb769e9efb832ee491b8f8cc21f82c15f154a896efbab690f431bb064c95f3a2b7a8
+  version: 1.0.30001508
+  resolution: "caniuse-lite@npm:1.0.30001508"
+  checksum: 0a083ed92194d87e608fc35cac65830a27900249729eb8a68e270f866f2c4f83396c2e54eb47b0ef71360682174dd74e2e68eac0b8d407d125611c7bc12488eb
   languageName: node
   linkType: hard
 
@@ -1824,9 +1824,9 @@ __metadata:
   linkType: hard
 
 "color-space@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "color-space@npm:2.0.0"
-  checksum: 2abfa964121c665090873860e0fe4c6b2e9752da30e4ef71d989ade516ecde972e80479b0f99334685022ff085772f8267c8549990aa1607ef3ab24677367420
+  version: 2.0.1
+  resolution: "color-space@npm:2.0.1"
+  checksum: 98f8f6acc716d2332705ef6a98876b47e8e39094256b83eec1df17246a5b5c37d107ae682e87d96488b06da12df3595ed5ad4f0e354a45571e23fb2196e4c6e7
   languageName: node
   linkType: hard
 
@@ -2543,9 +2543,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.431":
-  version: 1.4.439
-  resolution: "electron-to-chromium@npm:1.4.439"
-  checksum: 77e2f06bd569071109a7bc249f66976d72cf7fc79b7334da5c51cbeb3592bbe21cc430914d9f545d5271adfccbb451cb4e9d80a4c381d33bca74380645efc8c5
+  version: 1.4.440
+  resolution: "electron-to-chromium@npm:1.4.440"
+  checksum: 702f8f045492a15bc6eee408987c986de1e78a568b34fc68ed6a21e1fc03f3a3019e7e6a6d88c1f4468fbe788045425e70104ec9b481825d0bce00e3841418b8
   languageName: node
   linkType: hard
 
@@ -3796,9 +3796,9 @@ __metadata:
   linkType: hard
 
 "html-entities@npm:^2.3.2":
-  version: 2.3.6
-  resolution: "html-entities@npm:2.3.6"
-  checksum: 559a88dc3a2059b1e8882940dcaf996ea9d8151b9a780409ff223a79dc1d42ee8bb19b3365064f241f2e2543b0f90612d63f9b8e36d14c4c7fbb73540a8f41cb
+  version: 2.4.0
+  resolution: "html-entities@npm:2.4.0"
+  checksum: 25bea32642ce9ebd0eedc4d24381883ecb0335ccb8ac26379a0958b9b16652fdbaa725d70207ce54a51db24103436a698a8e454397d3ba8ad81460224751f1dc
   languageName: node
   linkType: hard
 
@@ -4705,11 +4705,11 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "minimatch@npm:9.0.1"
+  version: 9.0.2
+  resolution: "minimatch@npm:9.0.2"
   dependencies:
     brace-expansion: ^2.0.1
-  checksum: 97f5f5284bb57dc65b9415dec7f17a0f6531a33572193991c60ff18450dcfad5c2dad24ffeaf60b5261dccd63aae58cc3306e2209d57e7f88c51295a532d8ec3
+  checksum: 2eb12e2047a062fdb973fb51b9803f2455e3a00977858c038d66646d303a5a15bbcbc6ed5a2fc403bc869b1309f829ed3acd881d3246faf044ea7a494974b924
   languageName: node
   linkType: hard
 
