@@ -1,9 +1,10 @@
 import { FormGroup, NumericInput, Radio, RadioGroup } from '@blueprintjs/core'
 import { DateInput } from '@blueprintjs/datetime'
 import moment from 'moment'
+import * as Plotly from 'plotly.js'
 import * as React from 'react'
-import Plot from 'react-plotly.js'
 import './heartRate.scss'
+import { PlotlyChart } from './PlotlyChart'
 import { IHeartRateDay } from './whoop'
 import * as whoop from './whoop'
 
@@ -338,7 +339,7 @@ export class HeartRate extends React.Component<
     if (arr.length > 0) {
       return (
         <div>
-          <Plot
+          <PlotlyChart
             data={[
               {
                 line: {
