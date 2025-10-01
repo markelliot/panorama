@@ -1,5 +1,3 @@
-import moment from 'moment'
-
 const baseUrl = 'https://api-7.whoop.com'
 const corsSafeBaseUrl = 'https://panorama.markelliot.workers.dev'
 
@@ -58,7 +56,6 @@ export function login(email: string, password: string): Promise<IWhoopToken> {
   })
     .then((response) => response.json())
     .then((json) => {
-      console.log(json)
       const validUntil = new Date()
       validUntil.setSeconds(validUntil.getSeconds() + json.expires_in)
       return {
@@ -102,9 +99,12 @@ export function heartRate(
     token,
     `/users/${token.userId}/metrics/heart_rate?${query}`
   ).then((json) => {
-    const hr: IHeartRateDatum[] = json.values.map((datum: any) => {
-      return { time: datum.time, bpm: Number(datum.data) ?? 0 }
-    })
+    const hr: IHeartRateDatum[] = json.values.map(
+      (datum: { time: number; data: string }) => {
+        const bpm = Number(datum.data)
+        return { time: datum.time, bpm: isNaN(bpm) ? 0 : bpm }
+      }
+    )
     return {
       hr,
       start,
