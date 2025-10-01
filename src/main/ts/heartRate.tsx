@@ -173,8 +173,8 @@ export class HeartRate extends React.Component<
             <DateInput
               formatDate={this.formatDate}
               parseDate={this.parseDate}
-              value={this.state.date}
-              onChange={this.updateObservationDate}
+              value={this.formatDate(this.state.date)}
+              onChange={this.handleDateChange}
             />
           </FormGroup>
           <RadioGroup
@@ -468,6 +468,13 @@ export class HeartRate extends React.Component<
       ...this.state,
       form: { ...this.state.form, r3Multiplier },
     });
+  };
+
+  private handleDateChange = (newDate: string | null, isUserChange: boolean) => {
+    if (newDate && isUserChange) {
+      const date = this.parseDate(newDate);
+      this.setState({ ...this.state, date }, () => this.getData());
+    }
   };
 
   private updateObservationDate = (date: Date) => {
