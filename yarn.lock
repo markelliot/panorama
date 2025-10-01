@@ -1165,12 +1165,12 @@ __metadata:
   linkType: hard
 
 "@types/react-plotly.js@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@types/react-plotly.js@npm:2.5.0"
+  version: 2.6.3
+  resolution: "@types/react-plotly.js@npm:2.6.3"
   dependencies:
     "@types/plotly.js": "*"
     "@types/react": "*"
-  checksum: 4ade2f77740467eadc6e916e0f030eef3bf03b23940d6b17524193a73383a5316dc001081c01c7261d6dd6d3cc1e2b520313170a8537b5f8d4c7812f524f2de9
+  checksum: 5f85a52addb7d7cccf7271e6683870018b27289faa81c1e8287f4156c2aeff4e594caa4dca1de7ad435743a8283af47b7829b2c4919457528a1bd941b67df307
   languageName: node
   linkType: hard
 
