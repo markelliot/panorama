@@ -28,7 +28,7 @@ interface ILoginState {
   token?: IWhoopToken
 }
 
-export class Login extends React.Component<{}, ILoginState> {
+export class Login extends React.Component<Record<string, never>, ILoginState> {
   public state: ILoginState = {
     email: '',
     failureMessage: '',
@@ -139,11 +139,11 @@ export class Login extends React.Component<{}, ILoginState> {
     }
   }
 
-  private updateEmail = (event: any) => {
+  private updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ ...this.state, email: event.target.value })
   }
 
-  private updatePassword = (event: any) => {
+  private updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ ...this.state, password: event.target.value })
   }
 

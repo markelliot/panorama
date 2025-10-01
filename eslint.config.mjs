@@ -17,6 +17,14 @@ export default [
           jsx: true,
         },
       },
+      globals: {
+        document: 'readonly',
+        console: 'readonly',
+        localStorage: 'readonly',
+        fetch: 'readonly',
+        HTMLInputElement: 'readonly',
+        HTMLFormElement: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': tseslint,

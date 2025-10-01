@@ -374,7 +374,7 @@ export class HeartRate extends React.Component<
     const localDayStart = this.state.date
 
     switch (this.state.dayType) {
-      case DayType.SLEEP:
+      case DayType.SLEEP: {
         whoop
           .sleepCycle(this.props.token, localDayStart)
           .then((days) => {
@@ -390,11 +390,13 @@ export class HeartRate extends React.Component<
             console.error('error getting sleep cycle data', error)
           )
         break
-      case DayType.CALENDAR:
+      }
+      case DayType.CALENDAR: {
         const localDayEnd = new Date(this.state.date)
         localDayEnd.setSeconds(localDayEnd.getSeconds() + 86400)
         this.getHeartRate(localDayStart, localDayEnd)
         break
+      }
     }
   }
 
@@ -472,12 +474,15 @@ export class HeartRate extends React.Component<
     })
   }
 
-  private handleDateChange = (newDate: string | null, isUserChange: boolean) => {
+  private handleDateChange = (
+    newDate: string | null,
+    isUserChange: boolean
+  ) => {
     if (newDate && isUserChange) {
-      const date = this.parseDate(newDate);
-      this.setState({ ...this.state, date }, () => this.getData());
+      const date = this.parseDate(newDate)
+      this.setState({ ...this.state, date }, () => this.getData())
     }
-  };
+  }
 
   private updateObservationDate = (date: Date) => {
     this.setState({ ...this.state, date }, () => this.getData())
