@@ -1095,12 +1095,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.11":
-  version: 17.0.11
-  resolution: "@types/react-dom@npm:17.0.11"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10/6a1130c3e4a8daa79a8c2a2784384e9d64143cc36d54e75e16f0f8b1a24faa1dc0fa0872a118bffe2bb2399f975b245693309950436e858b37f67e83c1f16e4d
+"@types/react-dom@npm:^19.0.0":
+  version: 19.1.11
+  resolution: "@types/react-dom@npm:19.1.11"
+  peerDependencies:
+    "@types/react": ^19.0.0
+  checksum: 10/2fba541180fd341ffa81c867822470fb287e6b738a7b79b65532d7cf25339f820140a75015bd98f456518289963518cdc2e63cf31e35d5ae31b11aaf6ef99b46
   languageName: node
   linkType: hard
 
@@ -1125,14 +1125,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.35":
-  version: 17.0.35
-  resolution: "@types/react@npm:17.0.35"
+"@types/react@npm:^19.0.0":
+  version: 19.1.17
+  resolution: "@types/react@npm:19.1.17"
   dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/ab33f79c21d6e7362bc71eca0bee6f211557962877ef0afcc73a2dacd7ba1c5b4f607aefbb66baeec670a94742c3bce74d797d823ab373beeba7dbedda24d108
+  checksum: 10/b21d0ce3296e758e0bbbaa177bea0ed2d7c6a08810d3889d2e7777b2d7ff76d9454690b964883ce2c9d3da73412380dd6cff05794cbd54890e0ef1f3c4b4332d
   languageName: node
   linkType: hard
 
@@ -4937,7 +4935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -5677,8 +5675,8 @@ __metadata:
     "@blueprintjs/datetime": "npm:^6.0.0"
     "@blueprintjs/icons": "npm:^6.0.0"
     "@types/plotly.js": "npm:^1.54.16"
-    "@types/react": "npm:^17.0.35"
-    "@types/react-dom": "npm:^17.0.11"
+    "@types/react": "npm:^19.0.0"
+    "@types/react-dom": "npm:^19.0.0"
     "@types/react-plotly.js": "npm:^2.5.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
@@ -5693,8 +5691,8 @@ __metadata:
     prettier: "npm:^3.2.5"
     process: "npm:^0.11.10"
     prop-types: "npm:^15.8.1"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
+    react: "npm:^19.0.0"
+    react-dom: "npm:^19.0.0"
     react-plotly.js: "npm:^2.6.0"
     sass: "npm:^1.76.0"
     sass-loader: "npm:^16.0.0"
@@ -6246,15 +6244,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.3.1":
-  version: 18.3.1
-  resolution: "react-dom@npm:18.3.1"
+"react-dom@npm:^19.0.0":
+  version: 19.1.1
+  resolution: "react-dom@npm:19.1.1"
   dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.2"
+    scheduler: "npm:^0.26.0"
   peerDependencies:
-    react: ^18.3.1
-  checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
+    react: ^19.1.1
+  checksum: 10/9005415d2175b1f1eb4a544ad04afb29691bb7b6dd43bbdaa09932146b310b73bd4552bc772ad78fa481f409eada1560cf887606c83c1a53a922c1e30f1b3a34
   languageName: node
   linkType: hard
 
@@ -6323,12 +6320,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.3.1":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
+"react@npm:^19.0.0":
+  version: 19.1.1
+  resolution: "react@npm:19.1.1"
+  checksum: 10/9801530fdc939e1a7a499422e930515b2400809cb39c2872984e99f832d233f61659a693871183dac3155c2f9b2c9dcf4440a56bd18983277ae92860e38c3a61
   languageName: node
   linkType: hard
 
@@ -6710,12 +6705,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.2":
-  version: 0.23.2
-  resolution: "scheduler@npm:0.23.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/e8d68b89d18d5b028223edf090092846868a765a591944760942b77ea1f69b17235f7e956696efbb62c8130ab90af7e0949bfb8eba7896335507317236966bc9
+"scheduler@npm:^0.26.0":
+  version: 0.26.0
+  resolution: "scheduler@npm:0.26.0"
+  checksum: 10/1ecf2e5d7de1a7a132796834afe14a2d589ba7e437615bd8c06f3e0786a3ac3434655e67aac8755d9b14e05754c177e49c064261de2673aaa3c926bc98caa002
   languageName: node
   linkType: hard
 
