@@ -352,9 +352,13 @@ export class HeartRate extends React.Component<
             ]}
             layout={{
               autosize: true,
-              title,
+              title: {
+                text: title,
+              },
               yaxis: {
-                title: yLabel,
+                title: {
+                  text: yLabel,
+                },
               },
             }}
             style={{ width: "100%", height: "100%" }}
