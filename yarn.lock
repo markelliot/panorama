@@ -1111,11 +1111,11 @@ __metadata:
   linkType: hard
 
 "@types/react-dom@npm:^17.0.11":
-  version: 17.0.11
-  resolution: "@types/react-dom@npm:17.0.11"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10/6a1130c3e4a8daa79a8c2a2784384e9d64143cc36d54e75e16f0f8b1a24faa1dc0fa0872a118bffe2bb2399f975b245693309950436e858b37f67e83c1f16e4d
+  version: 17.0.26
+  resolution: "@types/react-dom@npm:17.0.26"
+  peerDependencies:
+    "@types/react": ^17.0.0
+  checksum: 10/86be1faf019b58f2b470a037c291c9c9efa5cf8b3927bfec436d83b12dd7a6a0369554c567c4ca8b59e1ee341b835c1b272cd0340628cbbea75ec43168858e5b
   languageName: node
   linkType: hard
 
@@ -1130,24 +1130,22 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*":
-  version: 17.0.15
-  resolution: "@types/react@npm:17.0.15"
+  version: 19.1.16
+  resolution: "@types/react@npm:19.1.16"
   dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/2bdcca92d5ea6dd0394b754787338c819e85e8e6cb600d7e49c54c6f746c0081ac7869df831dc88cc691e3bb200eb15cb99ef2ba19caafd37942551905040ad8
+  checksum: 10/e7d1511f4d683745a0ca2cd4e7a086af4370f90fb19d60fa8d1ae5e37b4a4eb83ecb4f79384d2da90e586b174b2d3a0248342389a292bc29ab94cecc9203fa33
   languageName: node
   linkType: hard
 
 "@types/react@npm:^17.0.35":
-  version: 17.0.35
-  resolution: "@types/react@npm:17.0.35"
+  version: 17.0.88
+  resolution: "@types/react@npm:17.0.88"
   dependencies:
     "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
+    "@types/scheduler": "npm:^0.16"
     csstype: "npm:^3.0.2"
-  checksum: 10/ab33f79c21d6e7362bc71eca0bee6f211557962877ef0afcc73a2dacd7ba1c5b4f607aefbb66baeec670a94742c3bce74d797d823ab373beeba7dbedda24d108
+  checksum: 10/e5e34786eeb3f9781bc240e529cb6cbda17c50c439dccdb307eb2528bd1eb0899e6f5d2029d4385d3ad1a4b0982748b258afcaeb6f4a94914f49989f6b99f774
   languageName: node
   linkType: hard
 
@@ -1158,10 +1156,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/scheduler@npm:*":
-  version: 0.16.2
-  resolution: "@types/scheduler@npm:0.16.2"
-  checksum: 10/b6b4dcfeae6deba2e06a70941860fb1435730576d3689225a421280b7742318d1548b3d22c1f66ab68e414f346a9542f29240bc955b6332c5b11e561077583bc
+"@types/scheduler@npm:^0.16":
+  version: 0.16.8
+  resolution: "@types/scheduler@npm:0.16.8"
+  checksum: 10/6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
   languageName: node
   linkType: hard
 
