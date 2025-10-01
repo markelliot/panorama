@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 
-import "./app.scss";
-import { Login } from "./login";
+import './app.scss'
+import { Login } from './login'
 
 // render root element
-ReactDOM.render(<Login />, document.getElementById("root"));
+ReactDOM.render(<Login />, document.getElementById('root'))

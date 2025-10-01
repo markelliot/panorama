@@ -1,58 +1,58 @@
-import { FormGroup, NumericInput, Radio, RadioGroup } from "@blueprintjs/core";
-import { DateInput } from "@blueprintjs/datetime";
-import moment from "moment";
-import * as React from "react";
-import Plot from "react-plotly.js";
-import "./heartRate.scss";
-import { IHeartRateDay } from "./whoop";
-import * as whoop from "./whoop";
+import { FormGroup, NumericInput, Radio, RadioGroup } from '@blueprintjs/core'
+import { DateInput } from '@blueprintjs/datetime'
+import moment from 'moment'
+import * as React from 'react'
+import Plot from 'react-plotly.js'
+import './heartRate.scss'
+import { IHeartRateDay } from './whoop'
+import * as whoop from './whoop'
 
 interface IHeartRateProps {
-  token: whoop.IWhoopToken;
+  token: whoop.IWhoopToken
 }
 
 enum DayType {
-  CALENDAR = "calendar",
-  SLEEP = "sleep",
+  CALENDAR = 'calendar',
+  SLEEP = 'sleep',
 }
 
 interface IPnoeForm {
-  r1Const?: string;
-  r2LowerBound?: string;
-  r2Const?: string;
-  r2Multiplier?: string;
-  r3LowerBound?: string;
-  r3Const?: string;
-  r3Multiplier?: string;
+  r1Const?: string
+  r2LowerBound?: string
+  r2Const?: string
+  r2Multiplier?: string
+  r3LowerBound?: string
+  r3Const?: string
+  r3Multiplier?: string
 }
 
 interface IPnoeState {
-  r1Const: number;
-  r2LowerBound: number;
-  r2Const: number;
-  r2Multiplier: number;
-  r3LowerBound: number;
-  r3Const: number;
-  r3Multiplier: number;
+  r1Const: number
+  r2LowerBound: number
+  r2Const: number
+  r2Multiplier: number
+  r3LowerBound: number
+  r3Const: number
+  r3Multiplier: number
 }
 
 interface IHeartRateState {
-  day?: whoop.IDay;
-  dayType: DayType;
-  date: Date;
-  hr?: IHeartRateDay;
-  form: IPnoeForm;
+  day?: whoop.IDay
+  dayType: DayType
+  date: Date
+  hr?: IHeartRateDay
+  form: IPnoeForm
 }
 
 interface IEnergyExpenditureDatum {
-  energyExpenditure: number;
-  time: number;
+  energyExpenditure: number
+  time: number
 }
 
-const now = new Date();
-now.setSeconds(0);
-now.setMinutes(0);
-now.setHours(0);
+const now = new Date()
+now.setSeconds(0)
+now.setMinutes(0)
+now.setHours(0)
 
 export class HeartRate extends React.Component<
   IHeartRateProps,
@@ -62,47 +62,47 @@ export class HeartRate extends React.Component<
     date: now,
     dayType: DayType.SLEEP,
     form: {},
-  };
+  }
 
   public componentDidMount() {
     if (!this.state.hr) {
-      this.getData();
+      this.getData()
     }
-    let updatedState = {};
-    updatedState = this.getStateFromLocalStorage(updatedState, "r1Const");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r2LowerBound");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r2Const");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r2Multiplier");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r3LowerBound");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r3Const");
-    updatedState = this.getStateFromLocalStorage(updatedState, "r3Multiplier");
-    this.setState({ ...this.state, form: updatedState });
+    let updatedState = {}
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r1Const')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r2LowerBound')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r2Const')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r2Multiplier')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r3LowerBound')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r3Const')
+    updatedState = this.getStateFromLocalStorage(updatedState, 'r3Multiplier')
+    this.setState({ ...this.state, form: updatedState })
   }
 
   public render() {
     // TODO(markelliot): we should do this off the UI thread as a result of state updates
-    const pnoe = this.pnoeState(this.state.form);
-    const energyExpenditure: IEnergyExpenditureDatum[] = [];
-    const cumEnergyExpenditure: IEnergyExpenditureDatum[] = [];
-    let dailyEnergyExpenditure = -1;
+    const pnoe = this.pnoeState(this.state.form)
+    const energyExpenditure: IEnergyExpenditureDatum[] = []
+    const cumEnergyExpenditure: IEnergyExpenditureDatum[] = []
+    let dailyEnergyExpenditure = -1
     if (pnoe && this.state.hr) {
       // calculate
-      dailyEnergyExpenditure = 0;
-      const hr = this.state.hr.hr;
+      dailyEnergyExpenditure = 0
+      const hr = this.state.hr.hr
       for (const tick of hr) {
         // some very basic smoothing
         // const bpm = (hr[i].bpm + hr[i - 1].bpm + hr[i - 2].bpm + hr[i - 3].bpm + hr[i - 4].bpm) / 5;
-        const bpm = tick.bpm;
-        const ee = this.energyExpenditure(bpm, pnoe);
+        const bpm = tick.bpm
+        const ee = this.energyExpenditure(bpm, pnoe)
         energyExpenditure.push({
           energyExpenditure: ee,
           time: tick.time,
-        });
-        dailyEnergyExpenditure = dailyEnergyExpenditure + ee;
+        })
+        dailyEnergyExpenditure = dailyEnergyExpenditure + ee
         cumEnergyExpenditure.push({
           energyExpenditure: dailyEnergyExpenditure,
           time: tick.time,
-        });
+        })
       }
     }
 
@@ -193,29 +193,29 @@ export class HeartRate extends React.Component<
             {this.dailyEe(dailyEnergyExpenditure)}
           </div>
           {this.scatterPlot(
-            "Energy Expenditure",
-            "kcal/min",
+            'Energy Expenditure',
+            'kcal/min',
             energyExpenditure,
             (e) => new Date(e.time),
             (e) => e.energyExpenditure
           )}
           {this.scatterPlot(
-            "Cumulative Energy Expenditure",
-            "kcal",
+            'Cumulative Energy Expenditure',
+            'kcal',
             cumEnergyExpenditure,
             (e) => new Date(e.time),
             (e) => e.energyExpenditure
           )}
           {this.scatterPlot(
-            "Heart Rate over Time",
-            "beats per minute",
+            'Heart Rate over Time',
+            'beats per minute',
             this.state.hr ? this.state.hr.hr : [],
             (e) => new Date(e.time),
             (e) => e.bpm
           )}
         </div>
       </div>
-    );
+    )
   }
 
   private pnoeState(form: IPnoeForm) {
@@ -228,13 +228,13 @@ export class HeartRate extends React.Component<
       form.r3LowerBound &&
       form.r3Multiplier
     ) {
-      const r1Const = Number(form.r1Const);
-      const r2Const = Number(form.r2Const);
-      const r2LowerBound = Number(form.r2LowerBound);
-      const r2Multiplier = Number(form.r2Multiplier);
-      const r3Const = Number(form.r3Const);
-      const r3LowerBound = Number(form.r3LowerBound);
-      const r3Multiplier = Number(form.r3Multiplier);
+      const r1Const = Number(form.r1Const)
+      const r2Const = Number(form.r2Const)
+      const r2LowerBound = Number(form.r2LowerBound)
+      const r2Multiplier = Number(form.r2Multiplier)
+      const r3Const = Number(form.r3Const)
+      const r3LowerBound = Number(form.r3LowerBound)
+      const r3Multiplier = Number(form.r3Multiplier)
 
       if (
         !isNaN(r1Const) &&
@@ -253,10 +253,10 @@ export class HeartRate extends React.Component<
           r3Const,
           r3LowerBound,
           r3Multiplier,
-        };
+        }
       }
     }
-    return undefined;
+    return undefined
   }
 
   private getStateFromLocalStorage(
@@ -264,17 +264,17 @@ export class HeartRate extends React.Component<
     item: keyof IPnoeForm
   ) {
     if (this.state.form[item] === undefined) {
-      const value = localStorage.getItem("pnoe." + item);
+      const value = localStorage.getItem('pnoe.' + item)
       if (value) {
-        updatedState[item] = value;
+        updatedState[item] = value
       }
     }
-    return updatedState;
+    return updatedState
   }
 
   private daySummary(day: whoop.IDay) {
-    const start = moment(day.during.lower);
-    const end = moment(day.during.upper);
+    const start = moment(day.during.lower)
+    const end = moment(day.during.upper)
 
     return (
       <div>
@@ -284,8 +284,8 @@ export class HeartRate extends React.Component<
             <tr>
               <td>Sleep Day</td>
               <td>
-                {start.format("HH:mm:ss (dd)")} -{" "}
-                {end.isValid() ? end.format("HH:mm:ss (dd)") : null}
+                {start.format('HH:mm:ss (dd)')} -{' '}
+                {end.isValid() ? end.format('HH:mm:ss (dd)') : null}
               </td>
             </tr>
             <tr>
@@ -297,13 +297,13 @@ export class HeartRate extends React.Component<
           </tbody>
         </table>
       </div>
-    );
+    )
   }
 
   private dailyEe(dailyEnergyExpenditure: number) {
     if (0 < dailyEnergyExpenditure) {
-      const start = moment(this.state.hr!.start);
-      const end = moment(this.state.hr!.end);
+      const start = moment(this.state.hr!.start)
+      const end = moment(this.state.hr!.end)
 
       return (
         <div>
@@ -313,8 +313,8 @@ export class HeartRate extends React.Component<
               <tr>
                 <td>Day</td>
                 <td>
-                  {start.format("HH:mm:ss (dd)")} -{" "}
-                  {end.isValid() ? end.format("HH:mm:ss (dd)") : null}
+                  {start.format('HH:mm:ss (dd)')} -{' '}
+                  {end.isValid() ? end.format('HH:mm:ss (dd)') : null}
                 </td>
               </tr>
               <tr>
@@ -324,7 +324,7 @@ export class HeartRate extends React.Component<
             </tbody>
           </table>
         </div>
-      );
+      )
     }
   }
 
@@ -344,8 +344,8 @@ export class HeartRate extends React.Component<
                 line: {
                   width: 1,
                 },
-                mode: "lines",
-                type: "scatter",
+                mode: 'lines',
+                type: 'scatter',
                 x: arr.map(dateExtractor),
                 y: arr.map(valueExtractor),
               },
@@ -361,118 +361,116 @@ export class HeartRate extends React.Component<
                 },
               },
             }}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: '100%', height: '100%' }}
             useResizeHandler={true}
           />
         </div>
-      );
+      )
     }
-    return null;
+    return null
   }
 
   private getData = () => {
-    const localDayStart = this.state.date;
+    const localDayStart = this.state.date
 
     switch (this.state.dayType) {
       case DayType.SLEEP:
         whoop
           .sleepCycle(this.props.token, localDayStart)
           .then((days) => {
-            this.setState({ ...this.state, day: days[0] });
+            this.setState({ ...this.state, day: days[0] })
 
-            const sleepDayStart = moment(days[0].during.lower).toDate();
+            const sleepDayStart = moment(days[0].during.lower).toDate()
             const sleepDayEnd = days[0].during.upper
               ? moment(days[0].during.upper).toDate()
-              : new Date();
-            this.getHeartRate(sleepDayStart, sleepDayEnd);
+              : new Date()
+            this.getHeartRate(sleepDayStart, sleepDayEnd)
           })
           .catch((error) =>
-            console.error("error getting sleep cycle data", error)
-          );
-        break;
+            console.error('error getting sleep cycle data', error)
+          )
+        break
       case DayType.CALENDAR:
-        const localDayEnd = new Date(this.state.date);
-        localDayEnd.setSeconds(localDayEnd.getSeconds() + 86400);
-        this.getHeartRate(localDayStart, localDayEnd);
-        break;
+        const localDayEnd = new Date(this.state.date)
+        localDayEnd.setSeconds(localDayEnd.getSeconds() + 86400)
+        this.getHeartRate(localDayStart, localDayEnd)
+        break
     }
-  };
+  }
 
   private getHeartRate = (start: Date, end: Date) => {
     whoop
       .heartRate(this.props.token, start, end)
       .then((hr) => this.setState({ ...this.state, hr }))
-      .catch((error) => console.error("error updating the heartRate", error));
-  };
+      .catch((error) => console.error('error updating the heartRate', error))
+  }
 
   private formatDate = (date: Date): string => {
-    return (
-      date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-    );
-  };
+    return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
+  }
 
   private parseDate = (str: string): Date => {
-    return new Date(str);
-  };
+    return new Date(str)
+  }
 
   private energyExpenditure = (heartRate: number, pnoe: IPnoeState): number => {
     if (heartRate < pnoe.r2LowerBound) {
-      return pnoe.r1Const / 1440;
+      return pnoe.r1Const / 1440
     }
 
     if (heartRate < pnoe.r3LowerBound) {
-      return (pnoe.r2Multiplier * heartRate + pnoe.r2Const) / 1440;
+      return (pnoe.r2Multiplier * heartRate + pnoe.r2Const) / 1440
     }
 
-    return (pnoe.r3Multiplier * heartRate + pnoe.r3Const) / 1440;
-  };
+    return (pnoe.r3Multiplier * heartRate + pnoe.r3Const) / 1440
+  }
 
   private updateR1Const = (num: number, r1Const: string) => {
-    localStorage.setItem("pnoe.r1Const", r1Const);
-    this.setState({ ...this.state, form: { ...this.state.form, r1Const } });
-  };
+    localStorage.setItem('pnoe.r1Const', r1Const)
+    this.setState({ ...this.state, form: { ...this.state.form, r1Const } })
+  }
 
   private updateR2LowerBound = (num: number, r2LowerBound: string) => {
-    localStorage.setItem("pnoe.r2LowerBound", r2LowerBound);
+    localStorage.setItem('pnoe.r2LowerBound', r2LowerBound)
     this.setState({
       ...this.state,
       form: { ...this.state.form, r2LowerBound },
-    });
-  };
+    })
+  }
 
   private updateR2Const = (num: number, r2Const: string) => {
-    localStorage.setItem("pnoe.r2Const", r2Const);
-    this.setState({ ...this.state, form: { ...this.state.form, r2Const } });
-  };
+    localStorage.setItem('pnoe.r2Const', r2Const)
+    this.setState({ ...this.state, form: { ...this.state.form, r2Const } })
+  }
 
   private updateR2Multiplier = (num: number, r2Multiplier: string) => {
-    localStorage.setItem("pnoe.r2Multiplier", r2Multiplier);
+    localStorage.setItem('pnoe.r2Multiplier', r2Multiplier)
     this.setState({
       ...this.state,
       form: { ...this.state.form, r2Multiplier },
-    });
-  };
+    })
+  }
 
   private updateR3LowerBound = (num: number, r3LowerBound: string) => {
-    localStorage.setItem("pnoe.r3LowerBound", r3LowerBound);
+    localStorage.setItem('pnoe.r3LowerBound', r3LowerBound)
     this.setState({
       ...this.state,
       form: { ...this.state.form, r3LowerBound },
-    });
-  };
+    })
+  }
 
   private updateR3Const = (num: number, r3Const: string) => {
-    localStorage.setItem("pnoe.r3Const", r3Const);
-    this.setState({ ...this.state, form: { ...this.state.form, r3Const } });
-  };
+    localStorage.setItem('pnoe.r3Const', r3Const)
+    this.setState({ ...this.state, form: { ...this.state.form, r3Const } })
+  }
 
   private updateR3Multiplier = (num: number, r3Multiplier: string) => {
-    localStorage.setItem("pnoe.r3Multiplier", r3Multiplier);
+    localStorage.setItem('pnoe.r3Multiplier', r3Multiplier)
     this.setState({
       ...this.state,
       form: { ...this.state.form, r3Multiplier },
-    });
-  };
+    })
+  }
 
   private handleDateChange = (newDate: string | null, isUserChange: boolean) => {
     if (newDate && isUserChange) {
@@ -482,21 +480,21 @@ export class HeartRate extends React.Component<
   };
 
   private updateObservationDate = (date: Date) => {
-    this.setState({ ...this.state, date }, () => this.getData());
-  };
+    this.setState({ ...this.state, date }, () => this.getData())
+  }
 
   private updateDayType: React.FormEventHandler<HTMLInputElement> = (evt) => {
-    const dayType = this.parseDayType((evt.target as HTMLInputElement).value);
-    this.setState({ ...this.state, dayType }, this.getData);
-  };
+    const dayType = this.parseDayType((evt.target as HTMLInputElement).value)
+    this.setState({ ...this.state, dayType }, this.getData)
+  }
 
   private parseDayType(str: string) {
     switch (str) {
       default:
       case DayType.SLEEP:
-        return DayType.SLEEP;
+        return DayType.SLEEP
       case DayType.CALENDAR:
-        return DayType.CALENDAR;
+        return DayType.CALENDAR
     }
   }
 }

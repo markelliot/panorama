@@ -5,13 +5,13 @@ import {
   InputGroup,
   Intent,
   Spinner,
-} from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
-import React from "react";
-import { HeartRate } from "./heartRate";
-import "./login.scss";
-import { IWhoopToken } from "./whoop";
-import * as whoop from "./whoop";
+} from '@blueprintjs/core'
+import { IconNames } from '@blueprintjs/icons'
+import React from 'react'
+import { HeartRate } from './heartRate'
+import './login.scss'
+import { IWhoopToken } from './whoop'
+import * as whoop from './whoop'
 
 enum LoginFlowState {
   prompt,
@@ -21,55 +21,55 @@ enum LoginFlowState {
 }
 
 interface ILoginState {
-  email: string;
-  failureMessage: string;
-  password: string;
-  state: LoginFlowState;
-  token?: IWhoopToken;
+  email: string
+  failureMessage: string
+  password: string
+  state: LoginFlowState
+  token?: IWhoopToken
 }
 
 export class Login extends React.Component<{}, ILoginState> {
   public state: ILoginState = {
-    email: "",
-    failureMessage: "",
-    password: "",
+    email: '',
+    failureMessage: '',
+    password: '',
     state: LoginFlowState.prompt,
-  };
+  }
 
   public componentDidMount() {
-    let updatedState = {};
+    let updatedState = {}
     if (this.state.email.length === 0) {
-      const storageEmail = localStorage.getItem("whoop.email");
+      const storageEmail = localStorage.getItem('whoop.email')
       if (storageEmail) {
         updatedState = {
           ...updatedState,
           email: storageEmail,
-        };
+        }
       }
     }
     if (this.state.password.length === 0) {
-      const storagePassword = localStorage.getItem("whoop.password");
+      const storagePassword = localStorage.getItem('whoop.password')
       if (storagePassword) {
         updatedState = {
           ...updatedState,
           password: storagePassword,
-        };
+        }
       }
     }
     if (!this.state.token) {
-      const storageToken = localStorage.getItem("whoop.token");
+      const storageToken = localStorage.getItem('whoop.token')
       if (storageToken) {
-        const token = JSON.parse(storageToken);
+        const token = JSON.parse(storageToken)
         if (new Date() < new Date(token.validUntil)) {
           updatedState = {
             ...updatedState,
             state: LoginFlowState.success,
             token,
-          };
+          }
         }
       }
     }
-    this.setState({ ...this.state, ...updatedState });
+    this.setState({ ...this.state, ...updatedState })
   }
 
   public render() {
@@ -83,7 +83,7 @@ export class Login extends React.Component<{}, ILoginState> {
               {this.state.failureMessage.length > 0 ? (
                 <p>{this.state.failureMessage}</p>
               ) : (
-                ""
+                ''
               )}
               <form onSubmit={this.doSubmit}>
                 <FormGroup label="WHOOP Email" labelFor="email">
@@ -124,7 +124,7 @@ export class Login extends React.Component<{}, ILoginState> {
               </form>
             </div>
           </div>
-        );
+        )
       case LoginFlowState.busy:
         return (
           <div className="login">
@@ -133,45 +133,45 @@ export class Login extends React.Component<{}, ILoginState> {
               <Spinner />
             </div>
           </div>
-        );
+        )
       case LoginFlowState.success:
-        return <HeartRate token={this.state.token!} />;
+        return <HeartRate token={this.state.token!} />
     }
   }
 
   private updateEmail = (event: any) => {
-    this.setState({ ...this.state, email: event.target.value });
-  };
+    this.setState({ ...this.state, email: event.target.value })
+  }
 
   private updatePassword = (event: any) => {
-    this.setState({ ...this.state, password: event.target.value });
-  };
+    this.setState({ ...this.state, password: event.target.value })
+  }
 
   private doSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    this.login();
-  };
+    event.preventDefault()
+    this.login()
+  }
 
   private login = () => {
-    localStorage.setItem("whoop.email", this.state.email);
-    localStorage.setItem("whoop.password", this.state.password);
-    this.setState({ ...this.state, state: LoginFlowState.busy });
+    localStorage.setItem('whoop.email', this.state.email)
+    localStorage.setItem('whoop.password', this.state.password)
+    this.setState({ ...this.state, state: LoginFlowState.busy })
     whoop
       .login(this.state.email, this.state.password)
       .then((token) => {
-        localStorage.setItem("whoop.token", JSON.stringify(token));
+        localStorage.setItem('whoop.token', JSON.stringify(token))
         this.setState({
           ...this.state,
           state: LoginFlowState.success,
           token,
-        });
+        })
       })
       .catch((error) => {
         this.setState({
           ...this.state,
           failureMessage: error,
           state: LoginFlowState.fail,
-        });
-      });
-  };
+        })
+      })
+  }
 }
