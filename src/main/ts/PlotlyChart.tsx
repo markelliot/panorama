@@ -9,8 +9,14 @@ type Props = {
   useResizeHandler?: boolean
 }
 
-export function PlotlyChart({ data, layout, config, style, useResizeHandler }: Props) {
-  const plotRef = React.useRef<HTMLDivElement>(null)
+export function PlotlyChart({
+  data,
+  layout,
+  config,
+  style,
+  useResizeHandler,
+}: Props) {
+  const plotRef = React.useRef<HTMLDivElement | null>(null)
 
   React.useEffect(() => {
     if (plotRef.current) {

@@ -1,7 +1,6 @@
 import { FormGroup, NumericInput, Radio, RadioGroup } from '@blueprintjs/core'
 import { DateInput } from '@blueprintjs/datetime'
 import moment from 'moment'
-import * as Plotly from 'plotly.js'
 import * as React from 'react'
 import './heartRate.scss'
 import { PlotlyChart } from './PlotlyChart'
