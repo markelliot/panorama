@@ -783,6 +783,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@plotly/regl@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@plotly/regl@npm:2.1.2"
+  checksum: 10/1e951d5161c3991efb98e3d33a38089306b4c2119d337d7f128d9474f2ff5eb91dd2fce7a0ca290e459432f10568f65ff3db37122c558fe55a270890093ca661
+  languageName: node
+  linkType: hard
+
 "@popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
@@ -881,13 +888,6 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10/fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
-  languageName: node
-  linkType: hard
-
-"@types/d3@npm:^3":
-  version: 3.5.45
-  resolution: "@types/d3@npm:3.5.45"
-  checksum: 10/1b67efa47d1991e00895232d6e150fe6a6c1415ea80d0762a6526b82fcfdf908a7177dc3a645eadc609278710072e323454d623964244842ba1e68ed7795fbde
   languageName: node
   linkType: hard
 
@@ -1078,12 +1078,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/plotly.js@npm:^1.54.16":
-  version: 1.54.22
-  resolution: "@types/plotly.js@npm:1.54.22"
-  dependencies:
-    "@types/d3": "npm:^3"
-  checksum: 10/f17c2678a665ae4710226b0a51626bfb3b367dc4c89f7ead1958d4172a37bb34eef10e4adc9f5a9422e072f98e1e827aac5a2225c46b4739463481fd935f071c
+"@types/plotly.js@npm:^3.0.0":
+  version: 3.0.7
+  resolution: "@types/plotly.js@npm:3.0.7"
+  checksum: 10/a11932a531b5e4ec21732833534698e2949a960c84c63dd24232d247294c0a9858eb9f5c9f0ab9ac45b88090ce0f7467913d7d626caf4d99363ece35b99c7455
   languageName: node
   linkType: hard
 
@@ -1662,13 +1660,6 @@ __metadata:
     require-from-string: "npm:^2.0.2"
     uri-js: "npm:^4.4.1"
   checksum: 10/4ada268c9a6e44be87fd295df0f0a91267a7bae8dbc8a67a2d5799c3cb459232839c99d18b035597bb6e3ffe88af6979f7daece854f590a81ebbbc2dfa80002c
-  languageName: node
-  linkType: hard
-
-"almost-equal@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "almost-equal@npm:1.1.0"
-  checksum: 10/d98e789baad27e73424a5d74a74ed12f29f80d1f473b45a80613408a6627f2778fca534b35ddd80fd6736f0b3afd0983396ddf09f935fad5159088fcf4f627c7
   languageName: node
   linkType: hard
 
@@ -2255,6 +2246,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color-name@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "color-name@npm:2.0.2"
+  checksum: 10/58e5fa3853a0dac813179e75a1fe07ff362abacb9fd456fcaae702b74d4ed5f6de2cbaee07ff2660f3495c7a6ceabc4ef0420165db0018e7150a6d4045f6539e
+  languageName: node
+  linkType: hard
+
 "color-normalize@npm:1.5.0":
   version: 1.5.0
   resolution: "color-normalize@npm:1.5.0"
@@ -2294,14 +2292,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-rgba@npm:2.1.1":
-  version: 2.1.1
-  resolution: "color-rgba@npm:2.1.1"
+"color-parse@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "color-parse@npm:2.0.2"
   dependencies:
-    clamp: "npm:^1.0.1"
-    color-parse: "npm:^1.3.8"
-    color-space: "npm:^1.14.6"
-  checksum: 10/0bdceaffa2ced014f51bc6f070181554c578ace7e1a1bea567e5ead3a95c875b27daad33ebacd979d4f5590cd689b260ef4a89d19de2e8045665cbd92595a61d
+    color-name: "npm:^2.0.0"
+  checksum: 10/64963587057e024edbce3f009e73e69b1d1b31d6f9955eed853748b8cb14d4e3bb49064da9c7452a22f5326a1197fa6c483483a53868e815f4cba30b6b1c36cc
+  languageName: node
+  linkType: hard
+
+"color-rgba@npm:3.0.0":
+  version: 3.0.0
+  resolution: "color-rgba@npm:3.0.0"
+  dependencies:
+    color-parse: "npm:^2.0.0"
+    color-space: "npm:^2.0.0"
+  checksum: 10/003b5fa70a77f46df3753e4b941154986163ccabbd9a8a80b2ca6cc4a0c9e505f3d4909c46a0b085e095d19b80297cf1c02dfefa33666b9ea1661ff52b3597bc
   languageName: node
   linkType: hard
 
@@ -2312,16 +2318,6 @@ __metadata:
     color-parse: "npm:^1.4.2"
     color-space: "npm:^2.0.0"
   checksum: 10/26db88980b0be49bd50da333c132c3a74680026fb99a3f17f80c961acb05c4a455c953a38078845effd96497d5823f7b2028f8a0cb6f9af81693bf8dd55443fd
-  languageName: node
-  linkType: hard
-
-"color-space@npm:^1.14.6":
-  version: 1.16.0
-  resolution: "color-space@npm:1.16.0"
-  dependencies:
-    hsluv: "npm:^0.0.3"
-    mumath: "npm:^3.3.4"
-  checksum: 10/c0fa9c60c500b18196a0fe8bb7963fa4093179ca20031e8006905943a9b74ced6656cec889e76c355d4dfe9fcda1f0388852da25d158d1030acfd93e570263bc
   languageName: node
   linkType: hard
 
@@ -2539,7 +2535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-loader@npm:^7.1.1, css-loader@npm:^7.1.2":
+"css-loader@npm:^7.1.1":
   version: 7.1.2
   resolution: "css-loader@npm:7.1.2"
   dependencies:
@@ -4361,13 +4357,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hsluv@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "hsluv@npm:0.0.3"
-  checksum: 10/1481b86d534867187150d4dd0e38783550e5a38dfad09e272755334d5694f971daa0f3eac5b42c153d7207f11b320c507936cbb1be4020bf8a16fea5ebda93f4
-  languageName: node
-  linkType: hard
-
 "html-minifier-terser@npm:^6.0.2":
   version: 6.1.0
   resolution: "html-minifier-terser@npm:6.1.0"
@@ -5181,7 +5170,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maplibre-gl@npm:^4.5.2":
+"maplibre-gl@npm:^4.7.1":
   version: 4.7.1
   resolution: "maplibre-gl@npm:4.7.1"
   dependencies:
@@ -5516,15 +5505,6 @@ __metadata:
   bin:
     multicast-dns: cli.js
   checksum: 10/e9add8035fb7049ccbc87b1b069f05bb3b31e04fe057bf7d0116739d81295165afc2568291a4a962bee01a5074e475996816eed0f50c8110d652af5abb74f95a
-  languageName: node
-  linkType: hard
-
-"mumath@npm:^3.3.4":
-  version: 3.3.4
-  resolution: "mumath@npm:3.3.4"
-  dependencies:
-    almost-equal: "npm:^1.1.0"
-  checksum: 10/9d8e84bb7bd3aa774aa6862c38b46a5e5e4b4cd94c29a781c19e5cdf48fa24d96ddb2d99277ba5d007dbcfe21241249da5e0797c71ac868496e2f838696b4a70
   languageName: node
   linkType: hard
 
@@ -5886,7 +5866,7 @@ __metadata:
     "@blueprintjs/core": "npm:^6.0.0"
     "@blueprintjs/datetime": "npm:^6.0.0"
     "@blueprintjs/icons": "npm:^6.0.0"
-    "@types/plotly.js": "npm:^1.54.16"
+    "@types/plotly.js": "npm:^3.0.0"
     "@types/react": "npm:^19.0.0"
     "@types/react-dom": "npm:^19.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
@@ -5900,7 +5880,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     html-webpack-plugin: "npm:^5.6.0"
     moment: "npm:^2.30.1"
-    plotly.js: "npm:^2.32.0"
+    plotly.js: "npm:^3.0.0"
     prettier: "npm:^3.2.5"
     process: "npm:^0.11.10"
     prop-types: "npm:^15.8.1"
@@ -6101,14 +6081,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plotly.js@npm:^2.32.0":
-  version: 2.35.3
-  resolution: "plotly.js@npm:2.35.3"
+"plotly.js@npm:^3.0.0":
+  version: 3.1.2
+  resolution: "plotly.js@npm:3.1.2"
   dependencies:
     "@plotly/d3": "npm:3.8.2"
     "@plotly/d3-sankey": "npm:0.7.2"
     "@plotly/d3-sankey-circular": "npm:0.33.1"
     "@plotly/mapbox-gl": "npm:1.13.4"
+    "@plotly/regl": "npm:^2.1.2"
     "@turf/area": "npm:^7.1.0"
     "@turf/bbox": "npm:^7.1.0"
     "@turf/centroid": "npm:^7.1.0"
@@ -6117,9 +6098,8 @@ __metadata:
     color-alpha: "npm:1.0.4"
     color-normalize: "npm:1.5.0"
     color-parse: "npm:2.0.0"
-    color-rgba: "npm:2.1.1"
+    color-rgba: "npm:3.0.0"
     country-regex: "npm:^1.1.0"
-    css-loader: "npm:^7.1.2"
     d3-force: "npm:^1.2.1"
     d3-format: "npm:^1.4.5"
     d3-geo: "npm:^1.12.1"
@@ -6134,7 +6114,7 @@ __metadata:
     has-hover: "npm:^1.0.1"
     has-passive-events: "npm:^1.0.0"
     is-mobile: "npm:^4.0.0"
-    maplibre-gl: "npm:^4.5.2"
+    maplibre-gl: "npm:^4.7.1"
     mouse-change: "npm:^1.4.0"
     mouse-event-offset: "npm:^3.0.2"
     mouse-wheel: "npm:^1.2.0"
@@ -6143,21 +6123,19 @@ __metadata:
     point-in-polygon: "npm:^1.1.0"
     polybooljs: "npm:^1.2.2"
     probe-image-size: "npm:^7.2.3"
-    regl: "npm:@plotly/regl@^2.1.2"
     regl-error2d: "npm:^2.0.12"
     regl-line2d: "npm:^3.1.3"
     regl-scatter2d: "npm:^3.3.1"
     regl-splom: "npm:^1.0.14"
     strongly-connected-components: "npm:^1.0.1"
-    style-loader: "npm:^4.0.0"
     superscript-text: "npm:^1.0.0"
     svg-path-sdf: "npm:^1.1.3"
     tinycolor2: "npm:^1.4.2"
     to-px: "npm:1.0.1"
     topojson-client: "npm:^3.1.0"
     webgl-context: "npm:^2.2.0"
-    world-calendars: "npm:^1.0.3"
-  checksum: 10/31f84a8d5aff32011379c75b2b052f8b6f47254649e17a74772081388b35fb4899619aea19453530241eada17d40edc0dca3fc9323dc0a62ce2e99c1c93ded02
+    world-calendars: "npm:^1.0.4"
+  checksum: 10/00d5e0c206bc2e1e6841276704b58621d9ac6037c48669968da4d202063a794a6171b4863e3770e9e5eae83b4650a950dc5bf230f689c75029b61cda77134d59
   languageName: node
   linkType: hard
 
@@ -6668,13 +6646,6 @@ __metadata:
     raf: "npm:^3.4.1"
     regl-scatter2d: "npm:^3.2.3"
   checksum: 10/e749729a3b0593b2de09080201832ceaee8625431b84fe60955803647ed112fe21d71ab997f6dc78c58171727c690cc23db32180ee528ec0071db5ea3ddb6eea
-  languageName: node
-  linkType: hard
-
-"regl@npm:@plotly/regl@^2.1.2":
-  version: 2.1.2
-  resolution: "@plotly/regl@npm:2.1.2"
-  checksum: 10/1e951d5161c3991efb98e3d33a38089306b4c2119d337d7f128d9474f2ff5eb91dd2fce7a0ca290e459432f10568f65ff3db37122c558fe55a270890093ca661
   languageName: node
   linkType: hard
 
@@ -8299,12 +8270,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"world-calendars@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "world-calendars@npm:1.0.3"
+"world-calendars@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "world-calendars@npm:1.0.4"
   dependencies:
     object-assign: "npm:^4.1.0"
-  checksum: 10/f5405fed2d305998cb8c5a18c66fdc5a9885f4c44b3e5a59028c825256c75e57756f4db652af6f0eabcc63b29c361bd1a9cee15f743db42b8bf1032dff7c1277
+  checksum: 10/c7dfbea3ba95f25bc5a675c5041b112bf7a5bbccf67cfddbd4cbda0cadc7078aaebd5341e4351ccc6a14a3d8187919767f8848abc4b74c5be8864cf04645a03f
   languageName: node
   linkType: hard
 
