@@ -38,7 +38,7 @@ export interface IStrain {
 function params(params: { [key: string]: string }) {
   return Object.entries(params)
     .map((kv) => `${kv[0]}=${kv[1]}`)
-    .reduce((acc, item) => (acc = acc + '&' + item))
+    .reduce((acc, item) => acc + '&' + item)
 }
 
 export function login(email: string, password: string): Promise<IWhoopToken> {
