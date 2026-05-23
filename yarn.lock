@@ -21,7 +21,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.13.0":
+"@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.15.0":
   version: 6.15.0
   resolution: "@blueprintjs/core@npm:6.15.0"
   dependencies:
@@ -49,12 +49,12 @@ __metadata:
   linkType: hard
 
 "@blueprintjs/datetime@npm:^6.0.0":
-  version: 6.0.26
-  resolution: "@blueprintjs/datetime@npm:6.0.26"
+  version: 6.1.1
+  resolution: "@blueprintjs/datetime@npm:6.1.1"
   dependencies:
-    "@blueprintjs/core": "npm:^6.13.0"
+    "@blueprintjs/core": "npm:^6.15.0"
     "@blueprintjs/icons": "npm:^6.10.0"
-    "@blueprintjs/select": "npm:^6.1.11"
+    "@blueprintjs/select": "npm:^6.2.1"
     classnames: "npm:^2.3.1"
     date-fns: "npm:^2.28.0"
     date-fns-tz: "npm:^2.0.0"
@@ -68,7 +68,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/6deccd6c00515c22e331a21e89d5a80d6c98d3ccde85150954bcacfcde603ac6476a1dd1cefee5286f7cb997e1fdc46068b8882a02bf0970e28030e8b7d43164
+  checksum: 10/8baaee93979819a3f6dcdf9c8b3166dfe0d11ea805a1761b60542e933186963aa149b50a6bce6841f5cb7dec26eb67eb9b365ad2fa230917cca9210838f3f233
   languageName: node
   linkType: hard
 
@@ -90,12 +90,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/select@npm:^6.1.11":
-  version: 6.1.11
-  resolution: "@blueprintjs/select@npm:6.1.11"
+"@blueprintjs/select@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "@blueprintjs/select@npm:6.2.1"
   dependencies:
     "@blueprintjs/colors": "npm:^5.1.16"
-    "@blueprintjs/core": "npm:^6.13.0"
+    "@blueprintjs/core": "npm:^6.15.0"
     "@blueprintjs/icons": "npm:^6.10.0"
     classnames: "npm:^2.3.1"
     tslib: "npm:~2.6.2"
@@ -106,7 +106,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/a6a9a3e37f66a37a9c9ead4a737723db9f21862f661ef9b7363d199f04bce35b654900207856391838a4bb6b6a5434d4e6561e1f9b6e000b63c5c583ead5639a
+  checksum: 10/f3d8fe31c3030b6bb98f5bdb4b871d773c8b87b3f6999949f1056cc264abf952166b418549f6fd6b60d94c21b5f712691d849ce27320d960bfa2326e54749314
   languageName: node
   linkType: hard
 
