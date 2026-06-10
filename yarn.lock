@@ -21,7 +21,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.15.1":
+"@blueprintjs/core@npm:^6.0.0":
   version: 6.15.1
   resolution: "@blueprintjs/core@npm:6.15.1"
   dependencies:
@@ -48,13 +48,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/datetime@npm:^6.0.0":
-  version: 6.1.2
-  resolution: "@blueprintjs/datetime@npm:6.1.2"
+"@blueprintjs/core@npm:^6.16.0":
+  version: 6.16.0
+  resolution: "@blueprintjs/core@npm:6.16.0"
   dependencies:
-    "@blueprintjs/core": "npm:^6.15.1"
-    "@blueprintjs/icons": "npm:^6.10.0"
-    "@blueprintjs/select": "npm:^6.2.2"
+    "@blueprintjs/colors": "npm:^5.1.16"
+    "@blueprintjs/icons": "npm:^6.11.0"
+    "@floating-ui/react": "npm:^0.27.13"
+    "@popperjs/core": "npm:^2.11.8"
+    classnames: "npm:^2.3.1"
+    normalize.css: "npm:^8.0.1"
+    react-popper: "npm:^2.3.0"
+    react-transition-group: "npm:^4.4.5"
+    tslib: "npm:~2.6.2"
+  peerDependencies:
+    "@types/react": 18 || 19
+    react: 18 || 19
+    react-dom: 18 || 19
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  bin:
+    upgrade-blueprint-2.0.0-rename: scripts/upgrade-blueprint-2.0.0-rename.sh
+    upgrade-blueprint-3.0.0-rename: scripts/upgrade-blueprint-3.0.0-rename.sh
+  checksum: 10/53591d8d165a250f4a8c8fa082ecfb9b38ecb5d1f5bc4e806f0b9732319af4d9c12ff479706c92c651cf902a3437906c903e5d9864e14aacf398ddeef4dfb90b
+  languageName: node
+  linkType: hard
+
+"@blueprintjs/datetime@npm:^6.0.0":
+  version: 6.2.0
+  resolution: "@blueprintjs/datetime@npm:6.2.0"
+  dependencies:
+    "@blueprintjs/core": "npm:^6.16.0"
+    "@blueprintjs/icons": "npm:^6.11.0"
+    "@blueprintjs/select": "npm:^6.3.0"
     classnames: "npm:^2.3.1"
     date-fns: "npm:^2.28.0"
     date-fns-tz: "npm:^2.0.0"
@@ -62,13 +89,13 @@ __metadata:
     react-innertext: "npm:^1.1.5"
     tslib: "npm:~2.6.2"
   peerDependencies:
-    "@types/react": 18
-    react: 18
-    react-dom: 18
+    "@types/react": 18 || 19
+    react: 18 || 19
+    react-dom: 18 || 19
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/4cab7237b3a392e55575d00dbe34f97fee193440d2954699cde0b8e7be0fa65a7a422120e340d32ba20a6b4ae6983fe3130d6bedbab08c28c24bae751b0de71a
+  checksum: 10/0f76c66f6257ce351e6708c53562d5fcb1a6be95829a365ae9124d8cde21de57a2cdc39396fc3a70bb1f1756f61c854772210176a846045bba8df4e6337608e0
   languageName: node
   linkType: hard
 
@@ -90,23 +117,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/select@npm:^6.2.2":
-  version: 6.2.2
-  resolution: "@blueprintjs/select@npm:6.2.2"
+"@blueprintjs/icons@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@blueprintjs/icons@npm:6.11.0"
   dependencies:
-    "@blueprintjs/colors": "npm:^5.1.16"
-    "@blueprintjs/core": "npm:^6.15.1"
-    "@blueprintjs/icons": "npm:^6.10.0"
+    change-case: "npm:^4.1.2"
     classnames: "npm:^2.3.1"
     tslib: "npm:~2.6.2"
   peerDependencies:
-    "@types/react": 18
-    react: 18
-    react-dom: 18
+    "@types/react": 18 || 19
+    react: 18 || 19
+    react-dom: 18 || 19
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/52490a0f3e8fd01cf4683a50f5101174b5bcee36d044d7fde89034af7c8621204c27b345addec2d63f42cb53851c46e1f8a4d067f918db096b2c4f0624693cef
+  checksum: 10/94528c090a6cb1ecf9425944852f3af08320fceb89147996b36f91c0d130fe0c0477f4c82a22c9eb9bcd36fd1d2393ca6fc527221bf67ad987150f7ae78e64bf
+  languageName: node
+  linkType: hard
+
+"@blueprintjs/select@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@blueprintjs/select@npm:6.3.0"
+  dependencies:
+    "@blueprintjs/colors": "npm:^5.1.16"
+    "@blueprintjs/core": "npm:^6.16.0"
+    "@blueprintjs/icons": "npm:^6.11.0"
+    classnames: "npm:^2.3.1"
+    tslib: "npm:~2.6.2"
+  peerDependencies:
+    "@types/react": 18 || 19
+    react: 18 || 19
+    react-dom: 18 || 19
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/7e23b111d775a7cb27ec2f4712da31e9910f80e4bf29978765e6873923cdcd5134343406e565be8bfd4506c7c8e549b4d49556e4cbf211664de084a427017e2f
   languageName: node
   linkType: hard
 
