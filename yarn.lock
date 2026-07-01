@@ -22,11 +22,11 @@ __metadata:
   linkType: hard
 
 "@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.16.0":
-  version: 6.16.0
-  resolution: "@blueprintjs/core@npm:6.16.0"
+  version: 6.17.0
+  resolution: "@blueprintjs/core@npm:6.17.0"
   dependencies:
     "@blueprintjs/colors": "npm:^5.1.16"
-    "@blueprintjs/icons": "npm:^6.11.0"
+    "@blueprintjs/icons": "npm:^6.12.0"
     "@floating-ui/react": "npm:^0.27.13"
     "@popperjs/core": "npm:^2.11.8"
     classnames: "npm:^2.3.1"
@@ -44,7 +44,7 @@ __metadata:
   bin:
     upgrade-blueprint-2.0.0-rename: scripts/upgrade-blueprint-2.0.0-rename.sh
     upgrade-blueprint-3.0.0-rename: scripts/upgrade-blueprint-3.0.0-rename.sh
-  checksum: 10/53591d8d165a250f4a8c8fa082ecfb9b38ecb5d1f5bc4e806f0b9732319af4d9c12ff479706c92c651cf902a3437906c903e5d9864e14aacf398ddeef4dfb90b
+  checksum: 10/20a307b145a2b5fb2426d4d949777b4a3998bfd1182a97c13b52b99f8b9c99cac3e58f50b2c6e3caf9103a455ce6f37b8dee979a94846915ffad0bcf277a2022
   languageName: node
   linkType: hard
 
@@ -87,6 +87,24 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/94528c090a6cb1ecf9425944852f3af08320fceb89147996b36f91c0d130fe0c0477f4c82a22c9eb9bcd36fd1d2393ca6fc527221bf67ad987150f7ae78e64bf
+  languageName: node
+  linkType: hard
+
+"@blueprintjs/icons@npm:^6.12.0":
+  version: 6.12.0
+  resolution: "@blueprintjs/icons@npm:6.12.0"
+  dependencies:
+    change-case: "npm:^4.1.2"
+    classnames: "npm:^2.3.1"
+    tslib: "npm:~2.6.2"
+  peerDependencies:
+    "@types/react": 18 || 19
+    react: 18 || 19
+    react-dom: 18 || 19
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/dfd265a349dd3a2b466327c9d7d06fa9d13eb0bb758d6b7a323a23e2d968e4a76490860dc3750eed63882fa3f351235c7af46e4bddd24e85e9588f45dbf9424c
   languageName: node
   linkType: hard
 
