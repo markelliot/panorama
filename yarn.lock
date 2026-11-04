@@ -21,7 +21,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.21.0":
+"@blueprintjs/core@npm:^6.0.0, @blueprintjs/core@npm:^6.22.0":
   version: 6.22.0
   resolution: "@blueprintjs/core@npm:6.22.0"
   dependencies:
@@ -49,12 +49,12 @@ __metadata:
   linkType: hard
 
 "@blueprintjs/datetime@npm:^6.0.0":
-  version: 6.3.0
-  resolution: "@blueprintjs/datetime@npm:6.3.0"
+  version: 6.3.1
+  resolution: "@blueprintjs/datetime@npm:6.3.1"
   dependencies:
-    "@blueprintjs/core": "npm:^6.21.0"
-    "@blueprintjs/icons": "npm:^6.14.1"
-    "@blueprintjs/select": "npm:^6.4.0"
+    "@blueprintjs/core": "npm:^6.22.0"
+    "@blueprintjs/icons": "npm:^6.15.0"
+    "@blueprintjs/select": "npm:^6.4.1"
     classnames: "npm:^2.3.1"
     date-fns: "npm:^2.28.0"
     date-fns-tz: "npm:^2.0.0"
@@ -68,11 +68,11 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/1e7173a7b650a4d8a894b06b61b1b1eeb96b60a2b0cd450e5bbea9e0e2be3a32d62897fe7a0d6c21d31c631d6a217ef4f265be907d23f7fe0272df7c3f5fca2c
+  checksum: 10/523a1fcd02b60a0f543ba21867ec48978595bb472c2225df4a571fe31ccf55d4ae06b43bba57d2848a190b340b1f1d22d0db4cab4b8985351d01ce22b891a8cc
   languageName: node
   linkType: hard
 
-"@blueprintjs/icons@npm:^6.0.0, @blueprintjs/icons@npm:^6.14.1, @blueprintjs/icons@npm:^6.15.0":
+"@blueprintjs/icons@npm:^6.0.0, @blueprintjs/icons@npm:^6.15.0":
   version: 6.15.0
   resolution: "@blueprintjs/icons@npm:6.15.0"
   dependencies:
@@ -90,13 +90,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueprintjs/select@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@blueprintjs/select@npm:6.4.0"
+"@blueprintjs/select@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@blueprintjs/select@npm:6.4.1"
   dependencies:
     "@blueprintjs/colors": "npm:^5.1.16"
-    "@blueprintjs/core": "npm:^6.21.0"
-    "@blueprintjs/icons": "npm:^6.14.1"
+    "@blueprintjs/core": "npm:^6.22.0"
+    "@blueprintjs/icons": "npm:^6.15.0"
     classnames: "npm:^2.3.1"
     tslib: "npm:~2.6.2"
   peerDependencies:
@@ -106,7 +106,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/90a00a569060b61f2a73a7a2224dbb6291cf487db6f600714c1becbce2c034fe2dd2182212289ea23e9882e6c8badeab097d390c7e6e93d491709ea4e477a5e7
+  checksum: 10/40c044bc13921411c635cfcd0768edbf803922089cf1d7898424f41782332fc6c95e77e5924cb7c40cab7e3a028f07d278ddef3062e1d8c6e2e8513ff9ddc285
   languageName: node
   linkType: hard
 
